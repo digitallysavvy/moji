@@ -28,9 +28,16 @@ class ViewController: ARCameraViewController, AVCaptureVideoDataOutputSampleBuff
 	var firstPlacement = true
 	var numModels = 1
 	
+	var videoRenderTarget : ARRenderTarget? = nil
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		print("View loaded")
+		
+		let screenBounds = UIScreen.main.bounds
+		let width = screenBounds.width
+		let height = screenBounds.height
+		videoRenderTarget = ARRenderTarget.init(width: Float(width), height: Float(height))
 		
 		// hide the navigation bar
 		self.navigationController?.setNavigationBarHidden(true, animated: false)
@@ -366,11 +373,6 @@ class ViewController: ARCameraViewController, AVCaptureVideoDataOutputSampleBuff
 		}
 	}
 	
-	lazy var cameraSession: AVCaptureSession = {
-		let s = AVCaptureSession()
-		s.sessionPreset = AVCaptureSessionPresetLow
-		return s
-	}()
 	
 	func recordScreen (gesture : UIGestureRecognizer) {
 		if arbiButtonState == ArbiTrackState.ARBI_TRACKING {
@@ -393,6 +395,12 @@ class ViewController: ARCameraViewController, AVCaptureVideoDataOutputSampleBuff
 			}
 		}
 	}
+	
+	lazy var cameraSession: AVCaptureSession = {
+		let s = AVCaptureSession()
+		s.sessionPreset = AVCaptureSessionPresetLow
+		return s
+	}()
 	
 	func setupCameraSession() {
 		let captureDevice = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeVideo) as AVCaptureDevice
@@ -427,7 +435,6 @@ class ViewController: ARCameraViewController, AVCaptureVideoDataOutputSampleBuff
 	
 	func captureOutput(_ captureOutput: AVCaptureOutput!, didOutputSampleBuffer sampleBuffer: CMSampleBuffer!, from connection: AVCaptureConnection!) {
 		// Here you collect each frame and process it
-
 		// ARRenderer.getInstance().addRenderTarget(self.cameraSession as ARRenderTarget)
 	}
 	
