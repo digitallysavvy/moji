@@ -8,6 +8,7 @@
 
 
 import UIKit
+import ReplayKit
 import AVFoundation
 import KudanAR
 
@@ -16,7 +17,7 @@ enum ArbiTrackState: Int {
 	case ARBI_TRACKING
 }
 
-class ViewController: ARCameraViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
+class ViewController: ARCameraViewController, RPPreviewViewControllerDelegate, AVCaptureVideoDataOutputSampleBufferDelegate {
 	
 	var modelNode : ARModelNode = ARModelNode()
 	var targetNode : ARModelNode = ARModelNode()
@@ -542,46 +543,46 @@ class ViewController: ARCameraViewController, AVCaptureVideoDataOutputSampleBuff
 	
 	// start/stop screen recording
 	func startRecording() {
-//		print("recording screen")
-//		let recorder = RPScreenRecorder.shared()
-//		
-//		recorder.startRecording{(error) in
-//			if let unwrappedError = error {
-//				print(unwrappedError.localizedDescription)
-//				self.stopRecording()
-//			}
-//		}
+		print("recording screen")
+		let recorder = RPScreenRecorder.shared()
+		
+		recorder.startRecording{(error) in
+			if let unwrappedError = error {
+				print(unwrappedError.localizedDescription)
+				self.stopRecording()
+			}
+		}
 	}
 	
 	func stopRecording() {
-//		let recorder = RPScreenRecorder.shared()
-//		print("done recording screen")
-//		recorder.stopRecording {(preview, error) in
-//			let renderer = ARRenderer.getInstance()
-//			objc_sync_enter(renderer)
-//			print("Pausing renderer")
-//			renderer?.pause()
-//			if let unwrappedPreview = preview {
-//				Flurry.logEvent("View_Recording_Preview", withParameters: nil, timed: true);
-//				ViewController().resignFirstResponder() // reset first responder
-//				// preview the recording
-//				unwrappedPreview.previewControllerDelegate = self
-//				self.present(unwrappedPreview, animated: true)
-//			} else {
-//				print("there was an error - resuming renderer")
-//				Flurry.logEvent("ERROR_Preview_Unavailable");
-//				ARRenderer.getInstance()?.resume()
-//			}
-//			objc_sync_exit(renderer)
-//		}
+		let recorder = RPScreenRecorder.shared()
+		print("done recording screen")
+		recorder.stopRecording {(preview, error) in
+			let renderer = ARRenderer.getInstance()
+			objc_sync_enter(renderer)
+			print("Pausing renderer")
+			renderer?.pause()
+			if let unwrappedPreview = preview {
+				Flurry.logEvent("View_Recording_Preview", withParameters: nil, timed: true);
+				ViewController().resignFirstResponder() // reset first responder
+				// preview the recording
+				unwrappedPreview.previewControllerDelegate = self
+				self.present(unwrappedPreview, animated: true)
+			} else {
+				print("there was an error - resuming renderer")
+				Flurry.logEvent("ERROR_Preview_Unavailable");
+				ARRenderer.getInstance()?.resume()
+			}
+			objc_sync_exit(renderer)
+		}
 	}
 	
-//	func previewControllerDidFinish(_ previewController: RPPreviewViewController) {
-//		dismiss(animated: true)
-//		modelDict = [:]
-//		self.navigationController?.pushViewController(ViewController(), animated: false)
-//		LIGHT_BTN?.setImage(UIImage.init(named: "lightDisabled"), for: .normal)
-//		Flurry.endTimedEvent("View_Recording_Preview", withParameters: nil);
-//	}
+	func previewControllerDidFinish(_ previewController: RPPreviewViewController) {
+		dismiss(animated: true)
+		modelDict = [:]
+		self.navigationController?.pushViewController(ViewController(), animated: false)
+		LIGHT_BTN?.setImage(UIImage.init(named: "lightDisabled"), for: .normal)
+		Flurry.endTimedEvent("View_Recording_Preview", withParameters: nil);
+	}
 }
 
