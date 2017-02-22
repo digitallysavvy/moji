@@ -76,7 +76,7 @@ class OverlayViewController: UIViewController {
 					for mDef in modelJSONDefs {
 						guard let name : String = mDef["name"] as! String? else { return }
 						modelDefs[name] = ModelObject.init(jsonModel: mDef)
-						print("model: \(name) added to modelDefs")
+//						print("model: \(name) added to modelDefs")
 					}
 				}
 			}
@@ -85,16 +85,16 @@ class OverlayViewController: UIViewController {
 			print("failed to load models")
 		}
 		
-		//setup launch animation
-		var imgListArray:[UIImage] = []
-		
-		for countValue in 0...160 {
-			imgListArray.append(UIImage(named: "frame_\(countValue).gif")!)
-		}
-		
-		AnimationView.animationImages = imgListArray
-		AnimationView.animationDuration = 4
-		AnimationView.startAnimating()
+//		//setup launch animation
+//		var imgListArray:[UIImage] = []
+//		
+//		for countValue in 0...160 {
+//			imgListArray.append(UIImage(named: "frame_\(countValue).gif")!)
+//		}
+//		
+//		AnimationView.animationImages = imgListArray
+//		AnimationView.animationDuration = 4
+//		AnimationView.startAnimating()
 		
 	}
 	
@@ -106,7 +106,7 @@ class OverlayViewController: UIViewController {
 			UIView.animate(withDuration: 1, delay:2.5, animations: { () -> Void in
 				self.AnimationView.alpha = 0
 				self.GreyBG.alpha = 0
-			})			
+			})
 		}
 
 	}

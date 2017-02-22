@@ -8,6 +8,7 @@
 
 
 import UIKit
+import ReplayKit
 import AVFoundation
 import KudanAR
 
@@ -16,7 +17,7 @@ enum ArbiTrackState: Int {
 	case ARBI_TRACKING
 }
 
-class ViewController: ARCameraViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
+class ViewController: ARCameraViewController, RPPreviewViewControllerDelegate, AVCaptureVideoDataOutputSampleBufferDelegate {
 	
 	var modelNode : ARModelNode = ARModelNode()
 	var targetNode : ARModelNode = ARModelNode()
@@ -28,9 +29,16 @@ class ViewController: ARCameraViewController, AVCaptureVideoDataOutputSampleBuff
 	var firstPlacement = true
 	var numModels = 1
 	
+	var videoRenderTarget : ARRenderTarget? = nil
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		print("View loaded")
+		
+		let screenBounds = UIScreen.main.bounds
+		let width = screenBounds.width
+		let height = screenBounds.height
+		videoRenderTarget = ARRenderTarget.init(width: Float(width), height: Float(height))
 		
 		// hide the navigation bar
 		self.navigationController?.setNavigationBarHidden(true, animated: false)
@@ -40,17 +48,17 @@ class ViewController: ARCameraViewController, AVCaptureVideoDataOutputSampleBuff
 				SELECT_BTN?.isHidden = false
 				
 				// trigger recording
-//				RPScreenRecorder.shared().startRecording(handler: { (error: Error?) -> Void in
-//					if error == nil {
-//						RPScreenRecorder.shared().stopRecording { (previewController: RPPreviewViewController?, error: Error?) -> Void in
-//							if previewController != nil {
-//								RPScreenRecorder.shared().discardRecording(handler: { () -> Void in
-//									// Executed once recording has successfully been discarded
-//								})
-//							}
-//						}
-//					}
-//				})
+				RPScreenRecorder.shared().startRecording(handler: { (error: Error?) -> Void in
+					if error == nil {
+						RPScreenRecorder.shared().stopRecording { (previewController: RPPreviewViewController?, error: Error?) -> Void in
+							if previewController != nil {
+								RPScreenRecorder.shared().discardRecording(handler: { () -> Void in
+									// Executed once recording has successfully been discarded
+								})
+							}
+						}
+					}
+				})
 			}
 		} else {
 			// reset some vars
@@ -113,7 +121,7 @@ class ViewController: ARCameraViewController, AVCaptureVideoDataOutputSampleBuff
 		
 		// screen gestures
 		let longPressGesture : UILongPressGestureRecognizer = UILongPressGestureRecognizer(target:self, action:#selector(longPressReset))
-		longPressGesture.minimumPressDuration = 2
+		longPressGesture.minimumPressDuration = 1.25
 		longPressGesture.require(toFail: longPressShutterGesture)
 		self.cameraView.addGestureRecognizer(longPressGesture);
 		
@@ -366,11 +374,6 @@ class ViewController: ARCameraViewController, AVCaptureVideoDataOutputSampleBuff
 		}
 	}
 	
-	lazy var cameraSession: AVCaptureSession = {
-		let s = AVCaptureSession()
-		s.sessionPreset = AVCaptureSessionPresetLow
-		return s
-	}()
 	
 	func recordScreen (gesture : UIGestureRecognizer) {
 		if arbiButtonState == ArbiTrackState.ARBI_TRACKING {
@@ -393,6 +396,12 @@ class ViewController: ARCameraViewController, AVCaptureVideoDataOutputSampleBuff
 			}
 		}
 	}
+	
+	lazy var cameraSession: AVCaptureSession = {
+		let s = AVCaptureSession()
+		s.sessionPreset = AVCaptureSessionPresetLow
+		return s
+	}()
 	
 	func setupCameraSession() {
 		let captureDevice = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeVideo) as AVCaptureDevice
@@ -427,7 +436,6 @@ class ViewController: ARCameraViewController, AVCaptureVideoDataOutputSampleBuff
 	
 	func captureOutput(_ captureOutput: AVCaptureOutput!, didOutputSampleBuffer sampleBuffer: CMSampleBuffer!, from connection: AVCaptureConnection!) {
 		// Here you collect each frame and process it
-
 		// ARRenderer.getInstance().addRenderTarget(self.cameraSession as ARRenderTarget)
 	}
 	
@@ -535,46 +543,46 @@ class ViewController: ARCameraViewController, AVCaptureVideoDataOutputSampleBuff
 	
 	// start/stop screen recording
 	func startRecording() {
-//		print("recording screen")
-//		let recorder = RPScreenRecorder.shared()
-//		
-//		recorder.startRecording{(error) in
-//			if let unwrappedError = error {
-//				print(unwrappedError.localizedDescription)
-//				self.stopRecording()
-//			}
-//		}
+		print("recording screen")
+		let recorder = RPScreenRecorder.shared()
+		
+		recorder.startRecording{(error) in
+			if let unwrappedError = error {
+				print(unwrappedError.localizedDescription)
+				self.stopRecording()
+			}
+		}
 	}
 	
 	func stopRecording() {
-//		let recorder = RPScreenRecorder.shared()
-//		print("done recording screen")
-//		recorder.stopRecording {(preview, error) in
-//			let renderer = ARRenderer.getInstance()
-//			objc_sync_enter(renderer)
-//			print("Pausing renderer")
-//			renderer?.pause()
-//			if let unwrappedPreview = preview {
-//				Flurry.logEvent("View_Recording_Preview", withParameters: nil, timed: true);
-//				ViewController().resignFirstResponder() // reset first responder
-//				// preview the recording
-//				unwrappedPreview.previewControllerDelegate = self
-//				self.present(unwrappedPreview, animated: true)
-//			} else {
-//				print("there was an error - resuming renderer")
-//				Flurry.logEvent("ERROR_Preview_Unavailable");
-//				ARRenderer.getInstance()?.resume()
-//			}
-//			objc_sync_exit(renderer)
-//		}
+		let recorder = RPScreenRecorder.shared()
+		print("done recording screen")
+		recorder.stopRecording {(preview, error) in
+			let renderer = ARRenderer.getInstance()
+			objc_sync_enter(renderer)
+			print("Pausing renderer")
+			renderer?.pause()
+			if let unwrappedPreview = preview {
+				Flurry.logEvent("View_Recording_Preview", withParameters: nil, timed: true);
+				ViewController().resignFirstResponder() // reset first responder
+				// preview the recording
+				unwrappedPreview.previewControllerDelegate = self
+				self.present(unwrappedPreview, animated: true)
+			} else {
+				print("there was an error - resuming renderer")
+				Flurry.logEvent("ERROR_Preview_Unavailable");
+				ARRenderer.getInstance()?.resume()
+			}
+			objc_sync_exit(renderer)
+		}
 	}
 	
-//	func previewControllerDidFinish(_ previewController: RPPreviewViewController) {
-//		dismiss(animated: true)
-//		modelDict = [:]
-//		self.navigationController?.pushViewController(ViewController(), animated: false)
-//		LIGHT_BTN?.setImage(UIImage.init(named: "lightDisabled"), for: .normal)
-//		Flurry.endTimedEvent("View_Recording_Preview", withParameters: nil);
-//	}
+	func previewControllerDidFinish(_ previewController: RPPreviewViewController) {
+		dismiss(animated: true)
+		modelDict = [:]
+		self.navigationController?.pushViewController(ViewController(), animated: false)
+		LIGHT_BTN?.setImage(UIImage.init(named: "lightDisabled"), for: .normal)
+		Flurry.endTimedEvent("View_Recording_Preview", withParameters: nil);
+	}
 }
 
