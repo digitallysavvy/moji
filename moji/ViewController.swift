@@ -48,17 +48,17 @@ class ViewController: ARCameraViewController, RPPreviewViewControllerDelegate, A
 				SELECT_BTN?.isHidden = false
 				
 				// trigger recording
-//				RPScreenRecorder.shared().startRecording(handler: { (error: Error?) -> Void in
-//					if error == nil {
-//						RPScreenRecorder.shared().stopRecording { (previewController: RPPreviewViewController?, error: Error?) -> Void in
-//							if previewController != nil {
-//								RPScreenRecorder.shared().discardRecording(handler: { () -> Void in
-//									// Executed once recording has successfully been discarded
-//								})
-//							}
-//						}
-//					}
-//				})
+				RPScreenRecorder.shared().startRecording(handler: { (error: Error?) -> Void in
+					if error == nil {
+						RPScreenRecorder.shared().stopRecording { (previewController: RPPreviewViewController?, error: Error?) -> Void in
+							if previewController != nil {
+								RPScreenRecorder.shared().discardRecording(handler: { () -> Void in
+									// Executed once recording has successfully been discarded
+								})
+							}
+						}
+					}
+				})
 			}
 		} else {
 			// reset some vars
@@ -121,7 +121,7 @@ class ViewController: ARCameraViewController, RPPreviewViewControllerDelegate, A
 		
 		// screen gestures
 		let longPressGesture : UILongPressGestureRecognizer = UILongPressGestureRecognizer(target:self, action:#selector(longPressReset))
-		longPressGesture.minimumPressDuration = 2
+		longPressGesture.minimumPressDuration = 1.25
 		longPressGesture.require(toFail: longPressShutterGesture)
 		self.cameraView.addGestureRecognizer(longPressGesture);
 		
