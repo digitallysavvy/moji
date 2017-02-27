@@ -506,21 +506,22 @@ class ViewController: ARCameraViewController, RPPreviewViewControllerDelegate, A
     }
     
     func updateMoji() {
-        Flurry.logEvent("Updating_Moji");
         // add log to track current model displayed
         if arbiButtonState == ArbiTrackState.ARBI_TRACKING {
-//            currentModel = (currentModel + 1) % numModels
-            objc_sync_enter(ARRenderer.getInstance())
-            let arbiTrack : ARArbiTrackerManager = ARArbiTrackerManager.getInstance()
-            arbiTrack.world.removeChild(self.modelNode)
-            modelNode = setupModel()
-            arbiTrack.world.addChild(self.modelNode)
-            if lastScale != nil {
-                modelNode.scale(byUniform: Float(lastScale!))
-            }
-            
-            objc_sync_exit(ARRenderer.getInstance())
+            Flurry.logEvent("Updating_Visible_Moji");
+        } else {
+            Flurry.logEvent("Updating_Hidden_Moji");
         }
+        objc_sync_enter(ARRenderer.getInstance())
+        let arbiTrack : ARArbiTrackerManager = ARArbiTrackerManager.getInstance()
+        arbiTrack.world.removeChild(self.modelNode)
+        modelNode = setupModel()
+        arbiTrack.world.addChild(self.modelNode)
+        if lastScale != nil {
+            modelNode.scale(byUniform: Float(lastScale!))
+        }
+        
+        objc_sync_exit(ARRenderer.getInstance())
     }
 	
 	func changeOBJ(gesture:UIGestureRecognizer) {
@@ -635,7 +636,7 @@ class ViewController: ARCameraViewController, RPPreviewViewControllerDelegate, A
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("didSelect")
+        Flurry.logEvent("Tapped_To_Change_Moji");
         SELECT_BTN?.isHidden = false
         SHUTTER_BTN?.isHidden = false
         SELECT_VIEW?.isHidden = true
