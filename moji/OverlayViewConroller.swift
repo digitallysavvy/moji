@@ -88,10 +88,10 @@ class OverlayViewController: UIViewController {
 					// loop through definitions and add to dict
 					for mDef in modelJSONDefs {
 						guard let name : String = mDef["name"] as! String? else { return }
-                        guard let select_icon : String = mDef["icon"] as! String? else { return }
+//                        guard let select_icon : String = mDef["icon"] as! String? else { return }
 						modelDefs[name] = ModelObject.init(jsonModel: mDef)
 //                        MOJI_LIST?.append(name)
-                        SELECT_ICON_LIST?.append(select_icon)
+//                        SELECT_ICON_LIST?.append(select_icon)
 //						print("model: \(name) added to modelDefs")
 					}
 				}
