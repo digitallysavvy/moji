@@ -1,0 +1,697 @@
+{
+	"models": [
+		{
+			"name" : "Happy",
+			"armodel" : "happy.armodel",
+			"diffuse-texure" : "happy.png",
+			"normal-texture" :  "",
+			"specular-texture" :  "",   
+			"scale" : 250,
+			"rotation" : 0,
+			"ambient" : {
+				"x" : 1,
+				"y" : 1,
+				"z" : 1
+			},
+			"specular" : {
+				"x" : 0.01,
+				"y" : 0.01,
+				"z" : 0.01
+			},
+			"shininess" : 1,
+			"reflectivity" : 0.025,
+			"reflection-map" : "mattPlastic",
+			"animated" : "false",
+			"icon" : "select_happy"
+		}, {
+			"name" : "Innocent",
+			"armodel" : "innocent.armodel",
+			"diffuse-texure" : "innocent.png",
+			"normal-texture" :  "",
+			"specular-texture" :  "",   
+			"scale" : 250,
+			"rotation" : 0,
+			"ambient" : {
+				"x" : 1,
+				"y" : 1,
+				"z" : 1
+			},
+			"specular" : {
+				"x" : 0.01,
+				"y" : 0.01,
+				"z" : 0.01
+			},
+			"shininess" : 1,
+			"reflectivity" : 0.025,
+			"reflection-map" : "mattPlastic",
+			"animated" : "false",
+			"icon" : "select_innocent"
+		}, {
+			"name" : "Kissing",
+			"armodel" : "kissing.armodel",
+			"diffuse-texure" : "kissing.png",
+			"normal-texture" :  "",
+			"specular-texture" :  "",   
+			"scale" : 250,
+			"rotation" : 0,
+			"ambient" : {
+				"x" : 1,
+				"y" : 1,
+				"z" : 1
+			},
+			"specular" : {
+				"x" : 0.01,
+				"y" : 0.01,
+				"z" : 0.01
+			},
+			"shininess" : 1,
+			"reflectivity" : 0.025,
+			"reflection-map" : "mattPlastic",
+			"animated" : "false",
+			"icon" : "select_kissing"
+		}, {
+			"name" : "Lol",
+			"armodel" : "lol.armodel",
+			"diffuse-texure" : "lol.png",
+			"normal-texture" :  "",
+			"specular-texture" :  "",   
+			"scale" : 250,
+			"rotation" : 0,
+			"ambient" : {
+				"x" : 1,
+				"y" : 1,
+				"z" : 1
+			},
+			"specular" : {
+				"x" : 0.01,
+				"y" : 0.01,
+				"z" : 0.01
+			},
+			"shininess" : 1,
+			"reflectivity" : 0.025,
+			"reflection-map" : "mattPlastic",
+			"animated" : "false",
+			"icon" : "select_lol"
+		}, {
+			"name" : "Love",
+			"armodel" : "love.armodel",
+			"diffuse-texure" : "love.png",
+			"normal-texture" :  "",
+			"specular-texture" :  "",   
+			"scale" : 250,
+			"rotation" : 0,
+			"ambient" : {
+				"x" : 1,
+				"y" : 1,
+				"z" : 1
+			},
+			"specular" : {
+				"x" : 0.01,
+				"y" : 0.01,
+				"z" : 0.01
+			},
+			"shininess" : 1,
+			"reflectivity" : 0.025,
+			"reflection-map" : "mattPlastic",
+			"animated" : "false",
+			"icon" : "select_love"
+		}, {
+			"name" : "Smirk",
+			"armodel" : "smirk.armodel",
+			"diffuse-texure" : "smirk.png",
+			"normal-texture" :  "",
+			"specular-texture" :  "",   
+			"scale" : 250,
+			"rotation" : 0,
+			"ambient" : {
+				"x" : 1.5,
+				"y" : 1.5,
+				"z" : 1.5
+			},
+			"specular" : {
+				"x" : 0.01,
+				"y" : 0.01,
+				"z" : 0.01
+			},
+			"shininess" : 1,
+			"reflectivity" : 0.025,
+			"reflection-map" : "mattPlastic",
+			"animated" : "false",
+			"icon" : "select_smirk"
+		}, {
+			"name" : "Bawling",
+			"armodel" : "bawling.armodel",
+			"diffuse-texure" : "bawling.png",
+			"normal-texture" :  "",
+			"specular-texture" :  "",   
+			"scale" : 250,
+			"rotation" : 0,
+			"ambient" : {
+				"x" : 1,
+				"y" : 1,
+				"z" : 1
+			},
+			"specular" : {
+				"x" : 0.01,
+				"y" : 0.01,
+				"z" : 0.01
+			},
+			"shininess" : 1,
+			"reflectivity" : 0.025,
+			"reflection-map" : "mattPlastic",
+			"animated" : "false",
+			"icon" : "select_bawling"
+		}, {
+			"name" : "Smile",
+			"armodel" : "smile.armodel",
+			"diffuse-texure" : "smile.png",
+			"normal-texture" :  "",
+			"specular-texture" :  "",   
+			"scale" : 250,
+			"rotation" : 0,
+			"ambient" : {
+				"x" : 1,
+				"y" : 1,
+				"z" : 1
+			},
+			"specular" : {
+				"x" : 0.01,
+				"y" : 0.01,
+				"z" : 0.01
+			},
+			"shininess" : 1,
+			"reflectivity" : 0.025,
+			"reflection-map" : "mattPlastic",
+			"animated" : "false",
+			"icon" : "select_smile"
+		}, {
+			"name" : "Sunglasses",
+			"armodel" : "sunglasses.armodel",
+			"diffuse-texure" : "sunglasses.png",
+			"normal-texture" :  "",
+			"specular-texture" :  "",   
+			"scale" : 250,
+			"rotation" : 0,
+			"ambient" : {
+				"x" : 1,
+				"y" : 1,
+				"z" : 1
+			},
+			"specular" : {
+				"x" : 0.01,
+				"y" : 0.01,
+				"z" : 0.01
+			},
+			"shininess" : 1,
+			"reflectivity" : 0.025,
+			"reflection-map" : "mattPlastic",
+			"animated" : "false",
+			"icon" : "select_sunglasses"
+		}, {
+			"name" : "SweatSmile",
+			"armodel" : "sweat-smile.armodel",
+			"diffuse-texure" : "sweat-smile.png",
+			"normal-texture" :  "",
+			"specular-texture" :  "",   
+			"scale" : 250,
+			"rotation" : 0,
+			"ambient" : {
+				"x" : 1,
+				"y" : 1,
+				"z" : 1
+			},
+			"specular" : {
+				"x" : 0.01,
+				"y" : 0.01,
+				"z" : 0.01
+			},
+			"shininess" : 1,
+			"reflectivity" : 0.025,
+			"reflection-map" : "mattPlastic",
+			"animated" : "false",
+			"icon" : "select_sweat-smile"
+		}, {
+			"name" : "Tongue",
+			"armodel" : "tongue.armodel",
+			"diffuse-texure" : "tongue.png",
+			"normal-texture" :  "",
+			"specular-texture" :  "",   
+			"scale" : 250,
+			"rotation" : 0,
+			"ambient" : {
+				"x" : 1,
+				"y" : 1,
+				"z" : 1
+			},
+			"specular" : {
+				"x" : 0.01,
+				"y" : 0.01,
+				"z" : 0.01
+			},
+			"shininess" : 1,
+			"reflectivity" : 0.025,
+			"reflection-map" : "mattPlastic",
+			"animated" : "false",
+			"icon" : "select_tongue"
+		}, {
+			"name" : "Wink",
+			"armodel" : "wink.armodel",
+			"diffuse-texure" : "wink.png",
+			"normal-texture" :  "",
+			"specular-texture" :  "",   
+			"scale" : 250,
+			"rotation" : 0,
+			"ambient" : {
+				"x" : 1,
+				"y" : 1,
+				"z" : 1
+			},
+			"specular" : {
+				"x" : 0.01,
+				"y" : 0.01,
+				"z" : 0.01
+			},
+			"shininess" : 1,
+			"reflectivity" : 0.025,
+			"reflection-map" : "mattPlastic",
+			"animated" : "false",
+			"icon" : "select_wink"
+		}, {
+			"name" : "Worried",
+			"armodel" : "worried.armodel",
+			"diffuse-texure" : "worried.png",
+			"normal-texture" :  "",
+			"specular-texture" :  "",   
+			"scale" : 250,
+			"rotation" : 0,
+			"ambient" : {
+				"x" : 1,
+				"y" : 1,
+				"z" : 1
+			},
+			"specular" : {
+				"x" : 0.01,
+				"y" : 0.01,
+				"z" : 0.01
+			},
+			"shininess" : 1,
+			"reflectivity" : 0.025,
+			"reflection-map" : "mattPlastic",
+			"animated" : "false",
+			"icon" : "select_worried"
+		}, {
+			"name" : "Dissapointed",
+			"armodel" : "dissapointed.armodel",
+			"diffuse-texure" : "dissapointed.png",
+			"normal-texture" :  "",
+			"specular-texture" :  "",   
+			"scale" : 250,
+			"rotation" : 0,
+			"ambient" : {
+				"x" : 1,
+				"y" : 1,
+				"z" : 1
+			},
+			"specular" : {
+				"x" : 0.01,
+				"y" : 0.01,
+				"z" : 0.01
+			},
+			"shininess" : 1,
+			"reflectivity" : 0.025,
+			"reflection-map" : "mattPlastic",
+			"animated" : "false",
+			"icon" : "select_dissapointed"
+		}, {
+			"name" : "Grimmace",
+			"armodel" : "grimmace.armodel",
+			"diffuse-texure" : "grimmace.png",
+			"normal-texture" :  "",
+			"specular-texture" :  "",   
+			"scale" : 250,
+			"rotation" : 0,
+			"ambient" : {
+				"x" : 1,
+				"y" : 1,
+				"z" : 1
+			},
+			"specular" : {
+				"x" : 0.01,
+				"y" : 0.01,
+				"z" : 0.01
+			},
+			"shininess" : 1,
+			"reflectivity" : 0.025,
+			"reflection-map" : "mattPlastic",
+			"animated" : "false",
+			"icon" : "select_grimmace"
+		}, {
+			"name" : "Surprised",
+			"armodel" : "surprised.armodel",
+			"diffuse-texure" : "surprised.png",
+			"normal-texture" :  "",
+			"specular-texture" :  "",   
+			"scale" : 250,
+			"rotation" : 0,
+			"ambient" : {
+				"x" : 1,
+				"y" : 1,
+				"z" : 1
+			},
+			"specular" : {
+				"x" : 0.01,
+				"y" : 0.01,
+				"z" : 0.01
+			},
+			"shininess" : 1,
+			"reflectivity" : 0.025,
+			"reflection-map" : "mattPlastic",
+			"animated" : "false",
+			"icon" : "select_surprised"
+		}, {
+			"name" : "Rage",
+			"armodel" : "rage.armodel",
+			"diffuse-texure" : "rage.png",
+			"normal-texture" :  "",
+			"specular-texture" :  "",   
+			"scale" : 250,
+			"rotation" : 0,
+			"ambient" : {
+				"x" : 1,
+				"y" : 1,
+				"z" : 1
+			},
+			"specular" : {
+				"x" : 0.01,
+				"y" : 0.01,
+				"z" : 0.01
+			},
+			"shininess" : 1,
+			"reflectivity" : 0.025,
+			"reflection-map" : "mattPlastic",
+			"animated" : "false",
+			"icon" : "select_rage"
+		}, {
+			"name" : "Sleep",
+			"armodel" : "sleep.armodel",
+			"diffuse-texure" : "sleep.png",
+			"normal-texture" :  "",
+			"specular-texture" :  "",   
+			"scale" : 250,
+			"rotation" : 0,
+			"ambient" : {
+				"x" : 1,
+				"y" : 1,
+				"z" : 1
+			},
+			"specular" : {
+				"x" : 0.01,
+				"y" : 0.01,
+				"z" : 0.01
+			},
+			"shininess" : 1,
+			"reflectivity" : 0.025,
+			"reflection-map" : "mattPlastic",
+			"animated" : "false",
+			"icon" : "select_sleeping"
+		}, {
+			"name" : "Expressionless",
+			"armodel" : "expresionless.armodel",
+			"diffuse-texure" : "expresionless.png",
+			"normal-texture" :  "",
+			"specular-texture" :  "",   
+			"scale" : 250,
+			"rotation" : 0,
+			"ambient" : {
+				"x" : 1.5,
+				"y" : 1.5,
+				"z" : 1.5
+			},
+			"specular" : {
+				"x" : 0.01,
+				"y" : 0.01,
+				"z" : 0.01
+			},
+			"shininess" : 1,
+			"reflectivity" : 0.025,
+			"reflection-map" : "mattPlastic",
+			"animated" : "false",
+			"icon" : "select_expresionless"
+		}, {
+			"name" : "Dizzy",
+			"armodel" : "dizzy.armodel",
+			"diffuse-texure" : "dizzy.png",
+			"normal-texture" :  "",
+			"specular-texture" :  "",   
+			"scale" : 250,
+			"rotation" : 0,
+			"ambient" : {
+				"x" : 1.5,
+				"y" : 1.5,
+				"z" : 1.5
+			},
+			"specular" : {
+				"x" : 0.01,
+				"y" : 0.01,
+				"z" : 0.01
+			},
+			"shininess" : 1,
+			"reflectivity" : 0.025,
+			"reflection-map" : "mattPlastic",
+			"animated" : "false",
+			"icon" : "select_dizzy"
+		}, {
+			"name" : "Confused",
+			"armodel" : "confused.armodel",
+			"diffuse-texure" : "confused.png",
+			"normal-texture" :  "",
+			"specular-texture" :  "",   
+			"scale" : 250,
+			"rotation" : 0,
+			"ambient" : {
+				"x" : 1.5,
+				"y" : 1.5,
+				"z" : 1.5
+			},
+			"specular" : {
+				"x" : 0.01,
+				"y" : 0.01,
+				"z" : 0.01
+			},
+			"shininess" : 1,
+			"reflectivity" : 0.025,
+			"reflection-map" : "mattPlastic",
+			"animated" : "false",
+			"icon" : "select_confused"
+		}, {
+			"name" : "Confounded",
+			"armodel" : "confounded.armodel",
+			"diffuse-texure" : "Confounded.png",
+			"normal-texture" :  "",
+			"specular-texture" :  "",   
+			"scale" : 250,
+			"rotation" : 0,
+			"ambient" : {
+				"x" : 2,
+				"y" : 2,
+				"z" : 2
+			},
+			"specular" : {
+				"x" : 0.01,
+				"y" : 0.01,
+				"z" : 0.01
+			},
+			"shininess" : 1,
+			"reflectivity" : 0.025,
+			"reflection-map" : "mattPlastic",
+			"animated" : "false",
+			"icon" : "select_confounded"
+		}, {
+			"name" : "Ghost",
+			"armodel" : "ghost.armodel",
+			"diffuse-texure" : "ghost.png",
+			"normal-texture" :  "",
+			"specular-texture" :  "",   
+			"scale" : 0.25,
+			"rotation" : 180,
+			"ambient" : {
+				"x" : 0.8,
+				"y" : 0.8,
+				"z" : 0.8
+			},
+			"specular" : {
+				"x" : 0.3,
+				"y" : 0.3,
+				"z" : 0.3
+			},
+			"shininess" : 15,
+			"reflectivity" : 0.1,
+			"reflection-map" : "mattMetal",
+			"animated" : "false",
+			"icon" : "select_ghost"
+		}, {
+			"name" : "KeepIt100",
+			"armodel" : "keepit100.armodel",
+			"diffuse-texure" : "red.jpg",
+			"normal-texture" :  "",
+			"specular-texture" :  "",   
+			"scale" : 0.35,
+			"rotation" : 140,
+			"ambient" : {
+				"x" : 0.8,
+				"y" : 0.8,
+				"z" : 0.8
+			},
+			"specular" : {
+				"x" : 0.3,
+				"y" : 0.3,
+				"z" : 0.3
+			},
+			"shininess" : 35,
+			"reflectivity" : 0.4,
+			"reflection-map" : "mattPlastic",
+			"animated" : "false",
+			"icon" : "select_keepit100"
+		}, {
+			"name" : "SleepingText",
+			"armodel" : "zzz.armodel",
+			"diffuse-texure" : "blue.jpg",
+			"normal-texture" :  "",
+			"specular-texture" :  "",   
+			"scale" : 20,
+			"rotation" : 210,            
+			"ambient" : {
+				"x" : 0.8,
+				"y" : 0.8,
+				"z" : 0.8
+			},
+			"specular" : {
+				"x" : 0.3,
+				"y" : 0.3,
+				"z" : 0.3
+			},
+			"shininess" : 35,
+			"reflectivity" : 0.4,
+			"reflection-map" : "mattPlastic",
+			"animated" : "false",
+			"icon" : "select_sleeptext"
+		}, {
+			"name" : "ExclamationPoint",
+			"armodel" : "exclamationPoint.armodel",
+			"diffuse-texure" : "red.jpg",
+			"normal-texture" :  "",
+			"specular-texture" :  "",   
+			"scale" : 40,
+			"rotation" : 0,
+			"ambient" : {
+				"x" : 0.8,
+				"y" : 0.8,
+				"z" : 0.8
+			},
+			"specular" : {
+				"x" : 0.3,
+				"y" : 0.3,
+				"z" : 0.3
+			},
+			"shininess" : 1,
+			"reflectivity" : 0.4,
+			"reflection-map" : "mattPlastic",
+			"animated" : "false",
+			"icon" : "select_exclamation"
+	   }, {
+			"name" : "QuestionMark",
+			"armodel" : "questionMark.armodel",
+			"diffuse-texure" : "red.jpg",
+			"normal-texture" :  "",
+			"specular-texture" :  "",   
+			"scale" : 40,
+			"rotation" : 180,
+			"ambient" : {
+				"x" : 0.8,
+				"y" : 0.8,
+				"z" : 0.8
+			},
+			"specular" : {
+				"x" : 0.3,
+				"y" : 0.3,
+				"z" : 0.3
+			},
+			"shininess" : 1,
+			"reflectivity" : 0.4,
+			"reflection-map" : "mattPlastic",
+			"animated" : "false",
+			"icon" : "select_questionmark"
+		}, {
+			"name" : "Poop",
+			"armodel" : "poop.armodel",
+			"diffuse-texure" : "poop.jpg",
+			"normal-texture" :  "",
+			"specular-texture" :  "",   
+			"scale" : 0.45,
+			"rotation" : -15,
+			"ambient" : {
+				"x" : 0.9,
+				"y" : 0.9,
+				"z" : 0.9
+			},
+			"specular" : {
+				"x" : 0.3,
+				"y" : 0.3,
+				"z" : 0.3
+			},
+			"shininess" : 35,
+			"reflectivity" : 0.4,
+			"reflection-map" : "mattPlastic",
+			"animated" : "false",
+			"icon" : "select_poop"
+		}, {
+			"name" : "WCpaper",
+			"armodel" : "wcpaper.armodel",
+			"diffuse-texure" : "WCpaperThickness.png",
+			"normal-texture" :  "WCpaperNormal.png",
+			"specular-texture" :  "",
+			"scale" : 15,
+			"rotation" : 70,
+			"ambient" : {
+				"x" : 0.5,
+				"y" : 0.5,
+				"z" : 0.5
+			},
+			"specular" : {
+				"x" : 0.3,
+				"y" : 0.3,
+				"z" : 0.3
+			},
+			"shininess" : 20,
+			"reflectivity" : 0,
+			"reflection-map" : "",
+			"animated" : "false",
+			"icon" : "select_wcpaper"
+		}, {
+			"name" : "Trophy",
+			"armodel" : "Trophy.armodel",
+			"diffuse-texure" : "Trophy.jpg", 
+			"normal-texture" :  "",
+			"specular-texture" :  "",                      
+			"scale" : 0.25,
+			"rotation" : 180,
+			"ambient" : {
+				"x" : 0.7,
+				"y" : 0.7,
+				"z" : 0.7
+			},
+			"specular" : {
+				"x" : 0.3,
+				"y" : 0.3,
+				"z" : 0.3
+			},
+			"shininess" : 10,
+			"reflectivity" : 0.35,
+			"reflection-map" : "mattMetal",
+			"animated" : "false",
+			"icon" : "select_trophy.jpg"
+		}
+	],
+	"dataTitle": "Moji Models",
+	"swiftVersion": 3
+}

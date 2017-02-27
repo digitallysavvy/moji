@@ -92,6 +92,38 @@
                             <imageView userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="frame_0.gif" translatesAutoresizingMaskIntoConstraints="NO" id="snR-6A-Gio">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceHorizontal="YES" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ub5-CK-0Jg">
+                                <rect key="frame" x="0.0" y="587" width="375" height="80"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="QRn-ze-eII"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="5h5-Fi-Zr6">
+                                    <size key="itemSize" width="63" height="63"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="mojiSelectionCellIdentifier" id="8C4-Ga-X9p" customClass="MojiSelectionCell" customModule="moji" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="9" width="63" height="63"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="63" height="63"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="select_happy" translatesAutoresizingMaskIntoConstraints="NO" id="iBN-9D-EUW">
+                                                    <rect key="frame" x="0.0" y="0.0" width="63" height="63"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                            </subviews>
+                                        </view>
+                                        <connections>
+                                            <outlet property="image" destination="iBN-9D-EUW" id="RZi-y2-1u9"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -104,12 +136,15 @@
                             <constraint firstItem="bBh-6p-zfk" firstAttribute="leading" secondItem="mzf-HB-FPt" secondAttribute="leadingMargin" id="4Hp-8D-wzI"/>
                             <constraint firstAttribute="trailing" secondItem="snR-6A-Gio" secondAttribute="trailing" id="51B-YB-Nh9"/>
                             <constraint firstItem="So6-5s-aOa" firstAttribute="top" secondItem="mzf-HB-FPt" secondAttribute="top" id="5kY-hH-bkj"/>
+                            <constraint firstItem="ub5-CK-0Jg" firstAttribute="leading" secondItem="mzf-HB-FPt" secondAttribute="leading" id="707-a5-xrA"/>
+                            <constraint firstItem="iJT-3I-sTR" firstAttribute="top" secondItem="ub5-CK-0Jg" secondAttribute="bottom" id="A1o-pe-3YS"/>
                             <constraint firstItem="iJT-3I-sTR" firstAttribute="top" secondItem="So6-5s-aOa" secondAttribute="bottom" id="AHs-EJ-MHV"/>
                             <constraint firstItem="So6-5s-aOa" firstAttribute="leading" secondItem="mzf-HB-FPt" secondAttribute="leading" id="ATr-l8-v8R"/>
                             <constraint firstItem="iJT-3I-sTR" firstAttribute="top" secondItem="So6-5s-aOa" secondAttribute="bottom" id="BwP-VE-qdk"/>
                             <constraint firstItem="bBh-6p-zfk" firstAttribute="top" secondItem="uRk-En-Ot4" secondAttribute="bottom" constant="15" id="DIo-IZ-gfp"/>
                             <constraint firstItem="So6-5s-aOa" firstAttribute="centerY" secondItem="mzf-HB-FPt" secondAttribute="centerY" id="EB2-wO-JAM"/>
                             <constraint firstItem="So6-5s-aOa" firstAttribute="leading" secondItem="mzf-HB-FPt" secondAttribute="leading" id="FPG-kP-Oyo"/>
+                            <constraint firstAttribute="trailing" secondItem="ub5-CK-0Jg" secondAttribute="trailing" id="Ik1-DG-4EA"/>
                             <constraint firstAttribute="trailingMargin" secondItem="BMG-t6-dj4" secondAttribute="trailing" constant="22" id="UxP-4F-CvH"/>
                             <constraint firstItem="xXe-Cw-JR6" firstAttribute="trailing" secondItem="mzf-HB-FPt" secondAttribute="trailingMargin" id="Wqf-o6-OyF"/>
                             <constraint firstItem="iJT-3I-sTR" firstAttribute="top" secondItem="MAJ-q9-Dc1" secondAttribute="bottom" constant="42" id="Wxb-sa-jEI"/>
@@ -133,6 +168,7 @@
                         <outlet property="GreyBG" destination="So6-5s-aOa" id="cbU-Q8-Tco"/>
                         <outlet property="LightBtn" destination="uwv-vt-HLO" id="Vvd-FK-jlh"/>
                         <outlet property="SelectBtn" destination="BMG-t6-dj4" id="Wrc-mU-8e2"/>
+                        <outlet property="SelectCollectionView" destination="ub5-CK-0Jg" id="R1O-rt-oG9"/>
                         <outlet property="ShareBtn" destination="DW9-x9-Meu" id="NVh-7y-HYf"/>
                         <outlet property="ShutterButtton" destination="MAJ-q9-Dc1" id="k46-B5-aKZ"/>
                         <outlet property="Watermark" destination="xXe-Cw-JR6" id="YFC-TP-gj4"/>
@@ -185,6 +221,7 @@
         <image name="grey-bg.jpg" width="240" height="240"/>
         <image name="lightDisabled" width="160" height="160"/>
         <image name="selectBtn" width="160" height="160"/>
+        <image name="select_happy" width="120" height="120"/>
         <image name="shutterBtn" width="80" height="80"/>
         <image name="watermark" width="305" height="160"/>
     </resources>

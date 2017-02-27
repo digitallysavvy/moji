@@ -16,9 +16,15 @@ var WATERMARK : UIImageView?
 var GREY_BG : UIImageView?
 var BACK_BTN : UIButton?
 var SHARE_BTN : UIButton?
+var SELECT_VIEW : UICollectionView?
+
+var MOJI_LIST : [String]? = ["Happy", "Innocent", "Kissing", "Lol", "Love", "Smirk", "Bawling", "Smile", "Sunglasses", "SweatSmile", "Tongue", "Wink", "Worried", "Dissapointed", "Grimmace", "Surprised", "Rage", "Sleep", "Expressionless", "Dizzy", "Confused", "Confounded", "Ghost", "KeepIt100", "SleepingText", "ExclamationPoint", "QuestionMark", "Poop", "WCpaper", "Trophy"]
+
+var SELECT_ICON_LIST : [String]? = ["select_happy", "select_innocent", "select_kissing", "select_lol", "select_love", "select_smirk", "select_bawling", "select_smile", "select_sunglasses", "select_sweat-smile", "select_tongue", "select_wink", "select_worried", "select_dissapointed", "select_grimmace", "select_surprised", "select_rage", "select_sleeping", "select_expresionless", "select_dizzy", "select_confused", "select_confounded", "select_ghost", "select_keepit100", "select_sleeptext", "select_exclamation", "select_questionmark", "select_poop", "select_wcpaper", "select_trophy"]
 
 var isFirstLoad : Bool = true
 var currentModel : Int = 0
+
 var modelDict : [String : ARModelNode] = [:]
 var modelDefs : [String : ModelObject] = [:]
 
@@ -35,6 +41,9 @@ class OverlayViewController: UIViewController {
 	@IBOutlet weak var AnimationView: UIImageView!
 	@IBOutlet weak var BackBtn: UIButton!
 	@IBOutlet weak var ShareBtn: UIButton!
+    @IBOutlet weak var SelectCollectionView: UICollectionView!
+    
+    let identifier = "CellIdentifier"
 	
 	@IBAction func BackBtnPressed(_ sender: Any) {
 		BackBtn.isHidden = true
@@ -44,7 +53,7 @@ class OverlayViewController: UIViewController {
 	}
 	
 	override func viewDidLoad() {
-		super.viewDidLoad()
+        super.viewDidLoad()
 		
 		// Do any additional setup after loading the view.
 		SHUTTER_BTN = ShutterButtton
@@ -54,17 +63,21 @@ class OverlayViewController: UIViewController {
 		GREY_BG = GreyBG
 		BACK_BTN = BackBtn
 		SHARE_BTN = ShareBtn
+        SELECT_VIEW = SelectCollectionView
 		
 		// Hide Preview Buttons
 		BackBtn.isHidden = true
 		ShareBtn.isHidden = true
 		Watermark.isHidden = true
+        
+        // Hide Selection Icons
+        SELECT_VIEW?.isHidden = true
 		
 		// add overlay view
 		overlayView = self.view
 		
 		// read in objct model definitions
-		let url = Bundle.main.url(forResource: "armodels", withExtension: "json")
+		let url = Bundle.main.url(forResource: "moji", withExtension: "json")
 		let data = NSData(contentsOf: url!)
 		
 		do {
@@ -75,7 +88,10 @@ class OverlayViewController: UIViewController {
 					// loop through definitions and add to dict
 					for mDef in modelJSONDefs {
 						guard let name : String = mDef["name"] as! String? else { return }
+                        guard let select_icon : String = mDef["icon"] as! String? else { return }
 						modelDefs[name] = ModelObject.init(jsonModel: mDef)
+//                        MOJI_LIST?.append(name)
+                        SELECT_ICON_LIST?.append(select_icon)
 //						print("model: \(name) added to modelDefs")
 					}
 				}
@@ -85,21 +101,11 @@ class OverlayViewController: UIViewController {
 			print("failed to load models")
 		}
 		
-//		//setup launch animation
-//		var imgListArray:[UIImage] = []
-//		
-//		for countValue in 0...160 {
-//			imgListArray.append(UIImage(named: "frame_\(countValue).gif")!)
-//		}
-//		
-//		AnimationView.animationImages = imgListArray
-//		AnimationView.animationDuration = 4
-//		AnimationView.startAnimating()
-		
 	}
 	
 	override func viewDidAppear(_ animated: Bool) {
-		if isFirstLoad {
+		currentModel = 0
+        if isFirstLoad {
 			// AnimationView.startAnimating()
 			AnimationView.alpha = 1.0
 			GreyBG.alpha = 1.0
@@ -110,6 +116,8 @@ class OverlayViewController: UIViewController {
 		}
 
 	}
+    
+    
 	
 	override func didReceiveMemoryWarning() {
 		super.didReceiveMemoryWarning()
@@ -120,7 +128,6 @@ class OverlayViewController: UIViewController {
 	override var prefersStatusBarHidden: Bool {
 		return true
 	}
-	
 	
 	/*
 	// MARK: - Navigation
