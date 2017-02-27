@@ -171,6 +171,8 @@
 		FA0A75F41E38437F003DC3DE /* frame_159.gif in Resources */ = {isa = PBXBuildFile; fileRef = FA0A75181E38437E003DC3DE /* frame_159.gif */; };
 		FA0A75F51E38437F003DC3DE /* frame_160.gif in Resources */ = {isa = PBXBuildFile; fileRef = FA0A75191E38437E003DC3DE /* frame_160.gif */; };
 		FA0A76331E3844AC003DC3DE /* grey-bg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FA0A76321E3844AC003DC3DE /* grey-bg.jpg */; };
+		FA0EFA621E62721900CF9D14 /* MojiSelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0EFA611E62721900CF9D14 /* MojiSelectionCell.swift */; };
+		FA0EFA641E62793800CF9D14 /* moji.json in Resources */ = {isa = PBXBuildFile; fileRef = FA0EFA631E62793800CF9D14 /* moji.json */; };
 		FA38B7501E346EF000DCD6AD /* armodels.json in Resources */ = {isa = PBXBuildFile; fileRef = FA38B74F1E346EEF00DCD6AD /* armodels.json */; };
 		FA38B7951E346FBB00DCD6AD /* CERAMIC_0.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FA38B7511E346FBB00DCD6AD /* CERAMIC_0.jpg */; };
 		FA38B7961E346FBB00DCD6AD /* CERAMIC_1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FA38B7521E346FBB00DCD6AD /* CERAMIC_1.jpg */; };
@@ -474,6 +476,8 @@
 		FA0A75181E38437E003DC3DE /* frame_159.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = frame_159.gif; sourceTree = "<group>"; };
 		FA0A75191E38437E003DC3DE /* frame_160.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = frame_160.gif; sourceTree = "<group>"; };
 		FA0A76321E3844AC003DC3DE /* grey-bg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "grey-bg.jpg"; path = "moji/grey-bg.jpg"; sourceTree = "<group>"; };
+		FA0EFA611E62721900CF9D14 /* MojiSelectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MojiSelectionCell.swift; sourceTree = "<group>"; };
+		FA0EFA631E62793800CF9D14 /* moji.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = moji.json; sourceTree = "<group>"; };
 		FA38B74F1E346EEF00DCD6AD /* armodels.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = armodels.json; sourceTree = "<group>"; };
 		FA38B7511E346FBB00DCD6AD /* CERAMIC_0.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = CERAMIC_0.jpg; sourceTree = "<group>"; };
 		FA38B7521E346FBB00DCD6AD /* CERAMIC_1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = CERAMIC_1.jpg; sourceTree = "<group>"; };
@@ -972,11 +976,13 @@
 				FA438B901E34627600E96114 /* ViewController.swift */,
 				FA438BDD1E346B8800E96114 /* ModelObject.swift */,
 				FA438BDB1E346A8B00E96114 /* OverlayViewConroller.swift */,
+				FA0EFA611E62721900CF9D14 /* MojiSelectionCell.swift */,
 				FA438B921E34627600E96114 /* Main.storyboard */,
 				FA438B9A1E34627600E96114 /* LaunchScreen.storyboard */,
 				FA438B981E34627600E96114 /* Assets.xcassets */,
 				FA438B9D1E34627600E96114 /* Info.plist */,
 				FA38B74F1E346EEF00DCD6AD /* armodels.json */,
+				FA0EFA631E62793800CF9D14 /* moji.json */,
 				FA438B951E34627600E96114 /* moji.xcdatamodeld */,
 			);
 			path = moji;
@@ -1302,6 +1308,7 @@
 				FA38B8691E357AF600DCD6AD /* nomounth.armodel in Resources */,
 				FA0A75CC1E38437F003DC3DE /* frame_119.gif in Resources */,
 				FA0A75C71E38437F003DC3DE /* frame_114.gif in Resources */,
+				FA0EFA641E62793800CF9D14 /* moji.json in Resources */,
 				FA0A75651E38437F003DC3DE /* frame_16.gif in Resources */,
 				FA0A75801E38437F003DC3DE /* frame_43.gif in Resources */,
 				FA0A75621E38437F003DC3DE /* frame_13.gif in Resources */,
@@ -1438,6 +1445,7 @@
 				FA438B8F1E34627600E96114 /* AppDelegate.swift in Sources */,
 				FA438B971E34627600E96114 /* moji.xcdatamodeld in Sources */,
 				FA438BD01E34666300E96114 /* FlurryEmpty.m in Sources */,
+				FA0EFA621E62721900CF9D14 /* MojiSelectionCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -24,6 +24,7 @@ class ModelObject {
 	var reflectivity : Float = 0
 	var reflectionMap : String?
 	var animated : Bool? = false
+    var selectIcon : String?
 	
 	init(jsonModel: [String:AnyObject]) {
 		if let name = jsonModel["name"] as! String?{
@@ -37,6 +38,7 @@ class ModelObject {
 			let reflectivity = jsonModel["reflectivity"] as! Float?
 			let reflectionMap = jsonModel["reflection-map"] as! String?
 			let animated = jsonModel["animated"] as! String?
+            let selectIcon = jsonModel["icon"] as! String?
 			
 			self.name = name
 			self.armodel = armodel
@@ -48,6 +50,7 @@ class ModelObject {
 			self.shininess = shininess!
 			self.reflectivity = reflectivity!
 			self.reflectionMap = reflectionMap
+            self.selectIcon = selectIcon
 			
 			if animated == "true" {
 				self.animated = true

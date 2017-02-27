@@ -17,7 +17,7 @@ enum ArbiTrackState: Int {
 	case ARBI_TRACKING
 }
 
-class ViewController: ARCameraViewController, RPPreviewViewControllerDelegate, AVCaptureVideoDataOutputSampleBufferDelegate {
+class ViewController: ARCameraViewController, RPPreviewViewControllerDelegate, AVCaptureVideoDataOutputSampleBufferDelegate, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
 	
 	var modelNode : ARModelNode = ARModelNode()
 	var targetNode : ARModelNode = ARModelNode()
@@ -32,8 +32,13 @@ class ViewController: ARCameraViewController, RPPreviewViewControllerDelegate, A
 	var videoRenderTarget : ARRenderTarget? = nil
 	
 	override func viewDidLoad() {
-		super.viewDidLoad()
+		SELECT_VIEW?.allowsSelection = true
+        super.viewDidLoad()
 		print("View loaded")
+        
+        // set data source and delegate
+        SELECT_VIEW?.delegate = self
+        SELECT_VIEW?.dataSource = self
 		
 		let screenBounds = UIScreen.main.bounds
 		let width = screenBounds.width
@@ -100,7 +105,7 @@ class ViewController: ARCameraViewController, RPPreviewViewControllerDelegate, A
 		}
 		
 		// swap out model
-		let tapSelectGesture : UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(changeOBJ))
+		let tapSelectGesture : UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(toggleSelectMenu))
 		
 		if SELECT_BTN != nil {
 			SELECT_BTN?.addGestureRecognizer(tapSelectGesture)
@@ -136,11 +141,11 @@ class ViewController: ARCameraViewController, RPPreviewViewControllerDelegate, A
 	func setupModel() -> ARModelNode {
 		// print("setting up model")
 		var objctParams : [String: String] = [:] // tracking purposes
-		let modelNames : [String] = ["Happy", "Lol", "SweatSmile", "Smile", "Innocent", "Wink", "Love", "Kissing", "Tongue", "Sunglasses", "Smirk", "Dissapointed", "Confused", "Confounded", "Rage", "Expressionless", "Worried", "Dizzy", "Surprised", "Bawling", "Sleep", "Grimmace", "Trophy", "Ghost", "Poop", "WCpaper", "KeepIt100", "SleepingText", "QuestionMark", "ExclamationPoint"]
-		let modelName : String = modelNames[currentModel]
+        let modelNames = MOJI_LIST
+        let modelName : String = modelNames![currentModel]
 		var modelNode : ARModelNode? = nil
 		var loadSource : String = "Created Model"
-		numModels = modelNames.count
+		numModels = (modelNames?.count)!
 		
 		objctParams["Model"] = modelName; // track which model is being setup
 		
@@ -489,6 +494,34 @@ class ViewController: ARCameraViewController, RPPreviewViewControllerDelegate, A
 		
 		lastPanX = x
 	}
+    
+    func toggleSelectMenu(gesture:UIGestureRecognizer) {
+        if (SELECT_VIEW?.isHidden)! {
+            Flurry.logEvent("Tapped_To_Change_Moji");
+            SELECT_BTN?.isHidden = true
+            SHUTTER_BTN?.isHidden = true
+            SELECT_VIEW?.isHidden = false
+        }
+        
+    }
+    
+    func updateMoji() {
+        Flurry.logEvent("Updating_Moji");
+        // add log to track current model displayed
+        if arbiButtonState == ArbiTrackState.ARBI_TRACKING {
+//            currentModel = (currentModel + 1) % numModels
+            objc_sync_enter(ARRenderer.getInstance())
+            let arbiTrack : ARArbiTrackerManager = ARArbiTrackerManager.getInstance()
+            arbiTrack.world.removeChild(self.modelNode)
+            modelNode = setupModel()
+            arbiTrack.world.addChild(self.modelNode)
+            if lastScale != nil {
+                modelNode.scale(byUniform: Float(lastScale!))
+            }
+            
+            objc_sync_exit(ARRenderer.getInstance())
+        }
+    }
 	
 	func changeOBJ(gesture:UIGestureRecognizer) {
 		Flurry.logEvent("Tapped_To_Change_Moji");
@@ -584,5 +617,40 @@ class ViewController: ARCameraViewController, RPPreviewViewControllerDelegate, A
 		LIGHT_BTN?.setImage(UIImage.init(named: "lightDisabled"), for: .normal)
 		Flurry.endTimedEvent("View_Recording_Preview", withParameters: nil);
 	}
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        // Set the number of items in your collection view.
+        return 30
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        // Access
+        let cell = SELECT_VIEW?.dequeueReusableCell(withReuseIdentifier: "mojiSelectionCellIdentifier", for: indexPath) as! MojiSelectionCell
+        // Modifications to custom cell, referencing the outlets defined
+        let currIndex : Int = (indexPath.section * 30) + indexPath.row
+        let select_icon : String = SELECT_ICON_LIST![currIndex]
+        cell.image.image = UIImage(named: select_icon)
+        
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("didSelect")
+        SELECT_BTN?.isHidden = false
+        SHUTTER_BTN?.isHidden = false
+        SELECT_VIEW?.isHidden = true
+        currentModel = (indexPath.section * 30) + indexPath.row
+        updateMoji()
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        
+        return 30
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        
+        return 1
+    }
 }
 
