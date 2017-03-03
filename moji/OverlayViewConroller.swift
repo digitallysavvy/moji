@@ -46,16 +46,25 @@ class OverlayViewController: UIViewController {
     let identifier = "CellIdentifier"
 	
 	@IBAction func BackBtnPressed(_ sender: Any) {
-		BackBtn.isHidden = true
-		ShareBtn.isHidden = true
-		GreyBG.alpha = 0
-		Flurry.logEvent("Tapped_Back_From_Preview");
+        if ShareBtn.isHidden {
+            BackBtn.isHidden = true
+            SelectCollectionView.isHidden = true
+            LightBtn.isHidden = false
+            SelectBtn.isHidden = false
+            ShutterButtton.isHidden = false
+            Flurry.logEvent("Tapped_Back_From_Select");
+        } else {
+            BackBtn.isHidden = true
+            ShareBtn.isHidden = true
+            GreyBG.alpha = 0
+            Flurry.logEvent("Tapped_Back_From_Preview");
+        }
 	}
 	
 	override func viewDidLoad() {
         super.viewDidLoad()
 		
-		// Do any additional setup after loading the view.
+		// set references
 		SHUTTER_BTN = ShutterButtton
 		SELECT_BTN = SelectBtn
 		LIGHT_BTN = LightBtn
@@ -100,7 +109,6 @@ class OverlayViewController: UIViewController {
 			// Handle Error
 			print("failed to load models")
 		}
-		
 	}
 	
 	override func viewDidAppear(_ animated: Bool) {
@@ -114,10 +122,7 @@ class OverlayViewController: UIViewController {
 				self.GreyBG.alpha = 0
 			})
 		}
-
 	}
-    
-    
 	
 	override func didReceiveMemoryWarning() {
 		super.didReceiveMemoryWarning()
