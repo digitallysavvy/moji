@@ -349,7 +349,6 @@ class ViewController: ARCameraViewController, RPPreviewViewControllerDelegate, A
 			SELECT_BTN?.isHidden = false
 			LIGHT_BTN?.isHidden = false
 		}
-		
 	}
 	
 	func sharePhoto (gesture : UIGestureRecognizer) {
@@ -402,6 +401,7 @@ class ViewController: ARCameraViewController, RPPreviewViewControllerDelegate, A
 		}
 	}
 	
+    /* =======
 	lazy var cameraSession: AVCaptureSession = {
 		let s = AVCaptureSession()
 		s.sessionPreset = AVCaptureSessionPresetLow
@@ -447,6 +447,7 @@ class ViewController: ARCameraViewController, RPPreviewViewControllerDelegate, A
 	func captureOutput(_ captureOutput: AVCaptureOutput!, didDrop sampleBuffer: CMSampleBuffer!, from connection: AVCaptureConnection!) {
 		// Here you can count how many frames are dopped
 	}
+    ====*/
 	
 	// Reset the tracker
 	func longPressReset(gesture : UIGestureRecognizer) {
@@ -497,12 +498,13 @@ class ViewController: ARCameraViewController, RPPreviewViewControllerDelegate, A
     
     func toggleSelectMenu(gesture:UIGestureRecognizer) {
         if (SELECT_VIEW?.isHidden)! {
-            Flurry.logEvent("Tapped_To_Change_Moji");
+            Flurry.logEvent("Tapped_To_Select_Moji");
             SELECT_BTN?.isHidden = true
             SHUTTER_BTN?.isHidden = true
+            LIGHT_BTN?.isHidden = true
             SELECT_VIEW?.isHidden = false
+            BACK_BTN?.isHidden = false
         }
-        
     }
     
     func updateMoji() {
@@ -520,7 +522,6 @@ class ViewController: ARCameraViewController, RPPreviewViewControllerDelegate, A
         if lastScale != nil {
             modelNode.scale(byUniform: Float(lastScale!))
         }
-        
         objc_sync_exit(ARRenderer.getInstance())
     }
 	
@@ -534,15 +535,12 @@ class ViewController: ARCameraViewController, RPPreviewViewControllerDelegate, A
 			arbiTrack.world.removeChild(self.modelNode)
 			modelNode = setupModel()
 			arbiTrack.world.addChild(self.modelNode)
-			
 			//if lastPanX != nil {
 				//modelNode.rotate(byDegrees: Float(lastPanX!), axisX: 0, y: 1, z: 0)
 			//}
-			
 			if lastScale != nil {
 				modelNode.scale(byUniform: Float(lastScale!))
 			}
-			
 			objc_sync_exit(ARRenderer.getInstance())
 		}
 	}
@@ -620,8 +618,7 @@ class ViewController: ARCameraViewController, RPPreviewViewControllerDelegate, A
 	}
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // Set the number of items in your collection view.
-        return 30
+        return 30 // Set the number of items in the collection view.
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -639,19 +636,20 @@ class ViewController: ARCameraViewController, RPPreviewViewControllerDelegate, A
         Flurry.logEvent("Tapped_To_Change_Moji");
         SELECT_BTN?.isHidden = false
         SHUTTER_BTN?.isHidden = false
+        LIGHT_BTN?.isHidden = false
         SELECT_VIEW?.isHidden = true
+        BACK_BTN?.isHidden = true
         currentModel = (indexPath.section * 30) + indexPath.row
         updateMoji()
     }
     
+    // Set spacing between items in the collection view.
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        
-        return 30
+        return 5
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        
-        return 1
+        return 2
     }
 }
 
