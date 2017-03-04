@@ -89,9 +89,6 @@
                                     <action selector="ShareBtnPressed:" destination="pvQ-wY-TM5" eventType="touchUpInside" id="hpx-Yi-BWK"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="frame_0.gif" translatesAutoresizingMaskIntoConstraints="NO" id="snR-6A-Gio">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                            </imageView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" directionalLockEnabled="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ub5-CK-0Jg">
                                 <rect key="frame" x="0.0" y="517" width="375" height="150"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -124,6 +121,16 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <webView contentMode="scaleAspectFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Byh-rt-Wiz">
+                                <rect key="frame" x="0.0" y="4" width="375" height="663"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </webView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="launchBg" translatesAutoresizingMaskIntoConstraints="NO" id="7Z1-W8-ocr">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -131,10 +138,8 @@
                             <constraint firstItem="uwv-vt-HLO" firstAttribute="top" secondItem="uRk-En-Ot4" secondAttribute="bottom" constant="19" id="1QB-wf-Sue"/>
                             <constraint firstItem="DW9-x9-Meu" firstAttribute="centerX" secondItem="mzf-HB-FPt" secondAttribute="centerX" id="25w-E8-VFN"/>
                             <constraint firstItem="iJT-3I-sTR" firstAttribute="top" secondItem="xXe-Cw-JR6" secondAttribute="bottom" constant="8" id="2nf-pi-Xjk"/>
-                            <constraint firstItem="snR-6A-Gio" firstAttribute="leading" secondItem="mzf-HB-FPt" secondAttribute="leading" id="3ZV-mb-1Lh"/>
                             <constraint firstItem="iJT-3I-sTR" firstAttribute="top" secondItem="BMG-t6-dj4" secondAttribute="bottom" constant="52" id="4Ce-rs-j3W"/>
                             <constraint firstItem="bBh-6p-zfk" firstAttribute="leading" secondItem="mzf-HB-FPt" secondAttribute="leadingMargin" id="4Hp-8D-wzI"/>
-                            <constraint firstAttribute="trailing" secondItem="snR-6A-Gio" secondAttribute="trailing" id="51B-YB-Nh9"/>
                             <constraint firstItem="So6-5s-aOa" firstAttribute="top" secondItem="mzf-HB-FPt" secondAttribute="top" id="5kY-hH-bkj"/>
                             <constraint firstItem="ub5-CK-0Jg" firstAttribute="leading" secondItem="mzf-HB-FPt" secondAttribute="leading" id="707-a5-xrA"/>
                             <constraint firstItem="iJT-3I-sTR" firstAttribute="top" secondItem="ub5-CK-0Jg" secondAttribute="bottom" id="A1o-pe-3YS"/>
@@ -148,8 +153,6 @@
                             <constraint firstAttribute="trailingMargin" secondItem="BMG-t6-dj4" secondAttribute="trailing" constant="22" id="UxP-4F-CvH"/>
                             <constraint firstItem="xXe-Cw-JR6" firstAttribute="trailing" secondItem="mzf-HB-FPt" secondAttribute="trailingMargin" id="Wqf-o6-OyF"/>
                             <constraint firstItem="iJT-3I-sTR" firstAttribute="top" secondItem="MAJ-q9-Dc1" secondAttribute="bottom" constant="42" id="Wxb-sa-jEI"/>
-                            <constraint firstItem="snR-6A-Gio" firstAttribute="top" secondItem="mzf-HB-FPt" secondAttribute="top" id="Xud-xn-6Hn"/>
-                            <constraint firstItem="snR-6A-Gio" firstAttribute="centerY" secondItem="mzf-HB-FPt" secondAttribute="centerY" id="Z63-HE-6EH"/>
                             <constraint firstItem="uwv-vt-HLO" firstAttribute="leading" secondItem="mzf-HB-FPt" secondAttribute="leadingMargin" constant="4" id="hrh-C4-r5m"/>
                             <constraint firstAttribute="trailing" secondItem="So6-5s-aOa" secondAttribute="trailing" id="ltL-r5-IzV"/>
                             <constraint firstAttribute="trailing" secondItem="So6-5s-aOa" secondAttribute="trailing" id="ndL-S9-Ond"/>
@@ -158,12 +161,9 @@
                             <constraint firstItem="So6-5s-aOa" firstAttribute="top" secondItem="mzf-HB-FPt" secondAttribute="top" id="sxm-Wq-R8n"/>
                             <constraint firstItem="bBh-6p-zfk" firstAttribute="leading" secondItem="mzf-HB-FPt" secondAttribute="leadingMargin" id="vcs-wE-QSU"/>
                             <constraint firstItem="xXe-Cw-JR6" firstAttribute="trailing" secondItem="mzf-HB-FPt" secondAttribute="trailingMargin" id="xtj-ys-0q1"/>
-                            <constraint firstItem="snR-6A-Gio" firstAttribute="centerX" secondItem="mzf-HB-FPt" secondAttribute="centerX" id="zaD-FJ-ism"/>
-                            <constraint firstItem="iJT-3I-sTR" firstAttribute="top" secondItem="snR-6A-Gio" secondAttribute="bottom" id="zuy-Tk-LRM"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="AnimationView" destination="snR-6A-Gio" id="npx-7f-8zo"/>
                         <outlet property="BackBtn" destination="bBh-6p-zfk" id="eED-WF-vxi"/>
                         <outlet property="GreyBG" destination="So6-5s-aOa" id="cbU-Q8-Tco"/>
                         <outlet property="LightBtn" destination="uwv-vt-HLO" id="Vvd-FK-jlh"/>
@@ -172,6 +172,8 @@
                         <outlet property="ShareBtn" destination="DW9-x9-Meu" id="NVh-7y-HYf"/>
                         <outlet property="ShutterButtton" destination="MAJ-q9-Dc1" id="k46-B5-aKZ"/>
                         <outlet property="Watermark" destination="xXe-Cw-JR6" id="YFC-TP-gj4"/>
+                        <outlet property="launchHolder" destination="7Z1-W8-ocr" id="z0r-0E-6hH"/>
+                        <outlet property="webAnimationView" destination="Byh-rt-Wiz" id="nKw-tv-F49"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I5m-gv-Xgu" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -217,8 +219,8 @@
     <resources>
         <image name="BackBtn" width="160" height="160"/>
         <image name="ShareBtn" width="160" height="160"/>
-        <image name="frame_0.gif" width="800" height="600"/>
         <image name="grey-bg.jpg" width="240" height="240"/>
+        <image name="launchBg" width="600" height="600"/>
         <image name="lightDisabled" width="160" height="160"/>
         <image name="selectBtn" width="160" height="160"/>
         <image name="select_happy" width="120" height="120"/>

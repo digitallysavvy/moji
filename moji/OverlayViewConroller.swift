@@ -17,6 +17,7 @@ var GREY_BG : UIImageView?
 var BACK_BTN : UIButton?
 var SHARE_BTN : UIButton?
 var SELECT_VIEW : UICollectionView?
+var WEB_VIEW : UIWebView?
 
 var MOJI_LIST : [String]? = ["Happy", "Innocent", "Kissing", "Lol", "Love", "Smirk", "Bawling", "Smile", "Sunglasses", "SweatSmile", "Tongue", "Wink", "Worried", "Dissapointed", "Grimmace", "Surprised", "Rage", "Sleep", "Expressionless", "Dizzy", "Confused", "Confounded", "Ghost", "KeepIt100", "SleepingText", "ExclamationPoint", "QuestionMark", "Poop", "WCpaper", "Trophy"]
 
@@ -42,6 +43,8 @@ class OverlayViewController: UIViewController {
 	@IBOutlet weak var BackBtn: UIButton!
 	@IBOutlet weak var ShareBtn: UIButton!
     @IBOutlet weak var SelectCollectionView: UICollectionView!
+    @IBOutlet weak var webAnimationView: UIWebView!
+    @IBOutlet weak var launchHolder: UIImageView!
     
     let identifier = "CellIdentifier"
 	
@@ -73,6 +76,7 @@ class OverlayViewController: UIViewController {
 		BACK_BTN = BackBtn
 		SHARE_BTN = ShareBtn
         SELECT_VIEW = SelectCollectionView
+        WEB_VIEW = webAnimationView
 		
 		// Hide Preview Buttons
 		BackBtn.isHidden = true
@@ -88,6 +92,12 @@ class OverlayViewController: UIViewController {
 		// read in objct model definitions
 		let url = Bundle.main.url(forResource: "moji", withExtension: "json")
 		let data = NSData(contentsOf: url!)
+        
+        let htmlPath = Bundle.main.path(forResource: "WebViewAnimationContent", ofType: "html")
+        let htmlURL = URL(fileURLWithPath: htmlPath!)
+        let html = try? Data(contentsOf: htmlURL)
+        
+        self.webAnimationView.load(html!, mimeType: "text/html", textEncodingName: "UTF-8", baseURL: htmlURL.deletingLastPathComponent())
 		
 		do {
 			//parse the JSON definitions
@@ -114,11 +124,13 @@ class OverlayViewController: UIViewController {
 	override func viewDidAppear(_ animated: Bool) {
 		currentModel = 0
         if isFirstLoad {
-			// AnimationView.startAnimating()
-			AnimationView.alpha = 1.0
+			webAnimationView.alpha = 1.0
 			GreyBG.alpha = 1.0
-			UIView.animate(withDuration: 1, delay:2.5, animations: { () -> Void in
-				self.AnimationView.alpha = 0
+            UIView.animate(withDuration: 0.5, delay:1.2, animations: { () -> Void in
+                self.launchHolder.alpha = 0
+            })
+			UIView.animate(withDuration: 0.75, delay:5.0, animations: { () -> Void in
+				self.webAnimationView.alpha = 0
 				self.GreyBG.alpha = 0
 			})
 		}

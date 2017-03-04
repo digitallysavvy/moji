@@ -298,6 +298,7 @@ class ViewController: ARCameraViewController, RPPreviewViewControllerDelegate, A
 	}
 	
 	func tapToPlace() {
+        WEB_VIEW?.loadRequest(NSURLRequest(url: NSURL(string: "about:blank")! as URL) as URLRequest)
 		//		hideShowUI()
 		let arbiTrack = ARArbiTrackerManager.getInstance()
 		if arbiButtonState == ArbiTrackState.ARBI_PLACEMENT {
