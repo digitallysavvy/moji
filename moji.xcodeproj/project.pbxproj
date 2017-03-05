@@ -12,6 +12,7 @@
 		FA0A76331E3844AC003DC3DE /* grey-bg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FA0A76321E3844AC003DC3DE /* grey-bg.jpg */; };
 		FA0EFA621E62721900CF9D14 /* MojiSelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0EFA611E62721900CF9D14 /* MojiSelectionCell.swift */; };
 		FA0EFA641E62793800CF9D14 /* moji.json in Resources */ = {isa = PBXBuildFile; fileRef = FA0EFA631E62793800CF9D14 /* moji.json */; };
+		FA296D6B1E6BA25B008FD779 /* ASScreenRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = FA296D6A1E6BA25B008FD779 /* ASScreenRecorder.m */; };
 		FA38B7501E346EF000DCD6AD /* armodels.json in Resources */ = {isa = PBXBuildFile; fileRef = FA38B74F1E346EEF00DCD6AD /* armodels.json */; };
 		FA38B7951E346FBB00DCD6AD /* CERAMIC_0.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FA38B7511E346FBB00DCD6AD /* CERAMIC_0.jpg */; };
 		FA38B7961E346FBB00DCD6AD /* CERAMIC_1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FA38B7521E346FBB00DCD6AD /* CERAMIC_1.jpg */; };
@@ -158,6 +159,8 @@
 		FA0A76321E3844AC003DC3DE /* grey-bg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "grey-bg.jpg"; path = "moji/grey-bg.jpg"; sourceTree = "<group>"; };
 		FA0EFA611E62721900CF9D14 /* MojiSelectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MojiSelectionCell.swift; sourceTree = "<group>"; };
 		FA0EFA631E62793800CF9D14 /* moji.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = moji.json; sourceTree = "<group>"; };
+		FA296D691E6BA25B008FD779 /* ASScreenRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASScreenRecorder.h; sourceTree = "<group>"; };
+		FA296D6A1E6BA25B008FD779 /* ASScreenRecorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASScreenRecorder.m; sourceTree = "<group>"; };
 		FA38B74F1E346EEF00DCD6AD /* armodels.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = armodels.json; sourceTree = "<group>"; };
 		FA38B7511E346FBB00DCD6AD /* CERAMIC_0.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = CERAMIC_0.jpg; sourceTree = "<group>"; };
 		FA38B7521E346FBB00DCD6AD /* CERAMIC_1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = CERAMIC_1.jpg; sourceTree = "<group>"; };
@@ -498,6 +501,8 @@
 				FA0EFA631E62793800CF9D14 /* moji.json */,
 				FA438B951E34627600E96114 /* moji.xcdatamodeld */,
 				FA7044D51E6A439C005A0245 /* WebViewAnimationContent.html */,
+				FA296D691E6BA25B008FD779 /* ASScreenRecorder.h */,
+				FA296D6A1E6BA25B008FD779 /* ASScreenRecorder.m */,
 			);
 			path = moji;
 			sourceTree = "<group>";
@@ -794,6 +799,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA438B911E34627600E96114 /* ViewController.swift in Sources */,
+				FA296D6B1E6BA25B008FD779 /* ASScreenRecorder.m in Sources */,
 				FA438BDE1E346B8800E96114 /* ModelObject.swift in Sources */,
 				FA438BD11E34666300E96114 /* FlurryWatchEmpty.m in Sources */,
 				FA438BDC1E346A8B00E96114 /* OverlayViewConroller.swift in Sources */,
