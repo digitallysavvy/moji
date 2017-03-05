@@ -70,4 +70,7 @@
 // Flurry Integration
 #import "Flurry.h"
 
+//AS Screen Recorder Integration
+#import "ASScreenRecorder.h"
+
 #endif /* Moji_Bridging_Header_h */
