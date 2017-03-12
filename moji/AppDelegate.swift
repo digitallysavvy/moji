@@ -10,6 +10,8 @@ import UIKit
 import CoreData
 import KudanAR
 
+//var VideoPreviewURL : NSURL?
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 

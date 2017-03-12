@@ -196,15 +196,14 @@
                 if (self.videoURL) {
                     completion();
                 } else {
-                    ALAssetsLibrary *library = [[ALAssetsLibrary alloc] init];
-                    [library writeVideoAtPathToSavedPhotosAlbum:_videoWriter.outputURL completionBlock:^(NSURL *assetURL, NSError *error) {
-                        if (error) {
-                            NSLog(@"Error copying video to camera roll:%@", [error localizedDescription]);
-                        } else {
-                            [self removeTempFilePath:_videoWriter.outputURL.path];
-                            completion();
-                        }
-                    }];
+                    NSString *previewURL = [_videoWriter.outputURL absoluteString];
+                    NSUserDefaults *standardUserDefaults = [NSUserDefaults standardUserDefaults];
+                    if (standardUserDefaults) {
+                        [standardUserDefaults setObject:previewURL forKey:@"previewURL"];
+                        [standardUserDefaults synchronize];
+//                        [self removeTempFilePath:_videoWriter.outputURL.path];
+                        completion();
+                    }
                 }
             }];
         });
@@ -236,7 +235,7 @@
             self.firstTimeStamp = _displayLink.timestamp;
         }
         CFTimeInterval elapsed = (_displayLink.timestamp - self.firstTimeStamp);
-        CMTime time = CMTimeMakeWithSeconds(elapsed, 1000);
+        CMTime time = CMTimeMakeWithSeconds(elapsed, 1000); // edit here to speed up video recording
         
         CVPixelBufferRef pixelBuffer = NULL;
         CGContextRef bitmapContext = [self createPixelBufferAndBitmapContext:&pixelBuffer];

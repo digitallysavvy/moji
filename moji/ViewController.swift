@@ -327,8 +327,9 @@ class ViewController: ARCameraViewController, AVCaptureVideoDataOutputSampleBuff
 			//UIImageWriteToSavedPhotosAlbum(screenCap, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
 			
 			// preview userPhoto
-			GREY_BG?.image = userPhoto
-			GREY_BG?.alpha = 1
+			PHOTO_PREVIEW?.image = userPhoto
+//			PHOTO_PREVIEW?.alpha = 1
+            PHOTO_PREVIEW?.isHidden = false
 			objc_sync_exit(ARRenderer.getInstance())
 			BACK_BTN?.isHidden = false
 			SHARE_BTN?.isHidden = false
@@ -340,10 +341,17 @@ class ViewController: ARCameraViewController, AVCaptureVideoDataOutputSampleBuff
 	}
 	
 	func sharePhoto (gesture : UIGestureRecognizer) {
-		Flurry.logEvent("Tapped_Share");
-		// set up activity view controller
-		let imageToShare = [ userPhoto! ]
-		let activityViewController = UIActivityViewController(activityItems: imageToShare, applicationActivities: nil)
+        // set up activity view controller
+        let activityViewController :UIActivityViewController
+        if (PHOTO_PREVIEW?.isHidden)! {
+            Flurry.logEvent("Tapped_Share_Video");
+            let userVideo = [ VideoPreviewURL! ]
+            activityViewController = UIActivityViewController(activityItems: userVideo, applicationActivities: nil)
+        } else {
+            Flurry.logEvent("Tapped_Share_Photo");
+            let userPhoto = [ self.userPhoto! ]
+            activityViewController = UIActivityViewController(activityItems: userPhoto, applicationActivities: nil)
+        }
 		activityViewController.popoverPresentationController?.sourceView = self.view // so that iPads won't crash
 		
 		// exclude some activity types from the list (optional)
@@ -357,7 +365,8 @@ class ViewController: ARCameraViewController, AVCaptureVideoDataOutputSampleBuff
 	func afterShareCompleted(activityType: UIActivityType?, shared: Bool, items: [Any]?, error: Error?) {
 		SHARE_BTN?.isHidden = true
 		BACK_BTN?.isHidden = true
-		GREY_BG?.alpha = 0
+        PHOTO_PREVIEW?.isHidden = true
+        VIDEO_PREVIEW?.isHidden = true
 		if (shared) {
 			Flurry.logEvent("Share_Successful");
 		}
@@ -391,6 +400,7 @@ class ViewController: ARCameraViewController, AVCaptureVideoDataOutputSampleBuff
                 objc_sync_enter(renderer)
                 recorder.stopRecording(completion: {
                     print("finished")
+                    self.previewVideo()
                 })
                 objc_sync_exit(renderer)
 				SHUTTER_BTN?.isHidden = false
@@ -400,6 +410,25 @@ class ViewController: ARCameraViewController, AVCaptureVideoDataOutputSampleBuff
 			}
 		}
 	}
+    
+    func previewVideo() {
+        let previewURL = UserDefaults.standard.value(forKey: "previewURL")
+        VideoPreviewURL = URL(string: previewURL! as! String)
+        PLAYER_INSTANCE = AVPlayer(url: VideoPreviewURL! as URL)
+        PLAYER_INSTANCE?.actionAtItemEnd = .none
+        PLAYER_INSTANCE?.isMuted = true
+        PLAYER_INSTANCE?.play()
+        NotificationCenter.default.addObserver(forName: .AVPlayerItemDidPlayToEndTime, object: PLAYER_INSTANCE?.currentItem, queue: nil, using: { (_) in
+            DispatchQueue.main.async {
+                PLAYER_INSTANCE?.seek(to: kCMTimeZero)
+                PLAYER_INSTANCE?.play()
+            }
+        })
+        VIDEO_PREVIEW?.player = PLAYER_INSTANCE
+        VIDEO_PREVIEW?.isHidden = false
+        BACK_BTN?.isHidden = false
+        SHARE_BTN?.isHidden = false
+    }
 	
     
 	// Reset the tracker

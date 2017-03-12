@@ -13,11 +13,14 @@ var SHUTTER_BTN : UIButton?
 var SELECT_BTN : UIButton?
 var LIGHT_BTN : UIButton?
 var WATERMARK : UIImageView?
-var GREY_BG : UIImageView?
+var PHOTO_PREVIEW : UIImageView?
+var VIDEO_PREVIEW : PlayerView?
+var PLAYER_INSTANCE: AVPlayer?
 var BACK_BTN : UIButton?
 var SHARE_BTN : UIButton?
 var SELECT_VIEW : UICollectionView?
 var WEB_VIEW : UIWebView?
+var VideoPreviewURL : URL?
 
 var MOJI_LIST : [String]? = ["Happy", "Innocent", "Kissing", "Lol", "Love", "Smirk", "Bawling", "Smile", "Sunglasses", "SweatSmile", "Tongue", "Wink", "Worried", "Dissapointed", "Grimmace", "Surprised", "Rage", "Sleep", "Expressionless", "Dizzy", "Confused", "Confounded", "Ghost", "KeepIt100", "SleepingText", "ExclamationPoint", "QuestionMark", "Poop", "WCpaper", "Trophy"]
 
@@ -38,13 +41,13 @@ class OverlayViewController: UIViewController {
 	@IBOutlet weak var LightBtn: UIButton!
 	@IBOutlet weak var SelectBtn: UIButton!
 	@IBOutlet weak var Watermark: UIImageView!
-	@IBOutlet weak var GreyBG: UIImageView!
-	@IBOutlet weak var AnimationView: UIImageView!
+    @IBOutlet weak var photoPreview: UIImageView!
 	@IBOutlet weak var BackBtn: UIButton!
 	@IBOutlet weak var ShareBtn: UIButton!
     @IBOutlet weak var SelectCollectionView: UICollectionView!
     @IBOutlet weak var webAnimationView: UIWebView!
     @IBOutlet weak var launchHolder: UIImageView!
+    @IBOutlet weak var videoPreview: PlayerView!
     
     let identifier = "CellIdentifier"
 	
@@ -59,7 +62,9 @@ class OverlayViewController: UIViewController {
         } else {
             BackBtn.isHidden = true
             ShareBtn.isHidden = true
-            GreyBG.alpha = 0
+            PHOTO_PREVIEW?.isHidden = true
+            VIDEO_PREVIEW?.isHidden = true
+            PLAYER_INSTANCE?.pause()
             Flurry.logEvent("Tapped_Back_From_Preview");
         }
 	}
@@ -72,7 +77,8 @@ class OverlayViewController: UIViewController {
 		SELECT_BTN = SelectBtn
 		LIGHT_BTN = LightBtn
 		WATERMARK = Watermark
-		GREY_BG = GreyBG
+		PHOTO_PREVIEW = photoPreview
+        VIDEO_PREVIEW = videoPreview
 		BACK_BTN = BackBtn
 		SHARE_BTN = ShareBtn
         SELECT_VIEW = SelectCollectionView
@@ -82,6 +88,10 @@ class OverlayViewController: UIViewController {
 		BackBtn.isHidden = true
 		ShareBtn.isHidden = true
 		Watermark.isHidden = true
+        
+        // Hide Preview Layers
+        videoPreview.isHidden = true
+        photoPreview.isHidden = true
         
         // Hide Selection Icons
         SELECT_VIEW?.isHidden = true
@@ -125,13 +135,11 @@ class OverlayViewController: UIViewController {
 		currentModel = 0
         if isFirstLoad {
 			webAnimationView.alpha = 1.0
-			GreyBG.alpha = 1.0
             UIView.animate(withDuration: 0.5, delay:1.2, animations: { () -> Void in
                 self.launchHolder.alpha = 0
             })
 			UIView.animate(withDuration: 0.75, delay:5.0, animations: { () -> Void in
 				self.webAnimationView.alpha = 0
-				self.GreyBG.alpha = 0
 			})
 		}
 	}

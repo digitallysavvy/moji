@@ -10,6 +10,7 @@
 #import <AVFoundation/AVFoundation.h>
 #import <QuartzCore/QuartzCore.h>
 #import <AssetsLibrary/AssetsLibrary.h>
+
 typedef void (^VideoCompletionBlock)(void);
 @protocol ASScreenRecorderDelegate;
 
