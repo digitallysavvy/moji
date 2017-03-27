@@ -235,7 +235,7 @@
             self.firstTimeStamp = _displayLink.timestamp;
         }
         CFTimeInterval elapsed = (_displayLink.timestamp - self.firstTimeStamp);
-        CMTime time = CMTimeMakeWithSeconds(elapsed, 1000); // edit here to speed up video recording
+        CMTime time = CMTimeMakeWithSeconds(elapsed, 100); // video recording buffer delay - below 100 causes warnings
         
         CVPixelBufferRef pixelBuffer = NULL;
         CGContextRef bitmapContext = [self createPixelBufferAndBitmapContext:&pixelBuffer];
