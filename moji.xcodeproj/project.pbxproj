@@ -123,7 +123,6 @@
 		FA438B9C1E34627600E96114 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA438B9A1E34627600E96114 /* LaunchScreen.storyboard */; };
 		FA438BA71E34627600E96114 /* mojiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA438BA61E34627600E96114 /* mojiTests.swift */; };
 		FA438BB21E34627600E96114 /* mojiUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA438BB11E34627600E96114 /* mojiUITests.swift */; };
-		FA438BC01E34647900E96114 /* KudanAR.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA438BBF1E34647900E96114 /* KudanAR.framework */; };
 		FA438BC31E34649A00E96114 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = FA438BC21E34649A00E96114 /* libc++.tbd */; };
 		FA438BD01E34666300E96114 /* FlurryEmpty.m in Sources */ = {isa = PBXBuildFile; fileRef = FA438BC91E34666300E96114 /* FlurryEmpty.m */; };
 		FA438BD11E34666300E96114 /* FlurryWatchEmpty.m in Sources */ = {isa = PBXBuildFile; fileRef = FA438BCC1E34666300E96114 /* FlurryWatchEmpty.m */; };
@@ -135,6 +134,8 @@
 		FA7044D41E6A4360005A0245 /* intro.gif in Resources */ = {isa = PBXBuildFile; fileRef = FA7044D31E6A4360005A0245 /* intro.gif */; };
 		FA7044D61E6A439C005A0245 /* WebViewAnimationContent.html in Resources */ = {isa = PBXBuildFile; fileRef = FA7044D51E6A439C005A0245 /* WebViewAnimationContent.html */; };
 		FA7445591E74FBD3001D3144 /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7445581E74FBD3001D3144 /* PlayerView.swift */; };
+		FAE891A51E995803007543D0 /* ARCaptureRenderTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE891A41E995803007543D0 /* ARCaptureRenderTarget.swift */; };
+		FAF28C751E8B5AC70095417D /* KudanAR.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAF28C741E8B5AC70095417D /* KudanAR.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -278,7 +279,6 @@
 		FA438BAD1E34627600E96114 /* mojiUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = mojiUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA438BB11E34627600E96114 /* mojiUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mojiUITests.swift; sourceTree = "<group>"; };
 		FA438BB31E34627600E96114 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FA438BBF1E34647900E96114 /* KudanAR.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = KudanAR.framework; sourceTree = "<group>"; };
 		FA438BC21E34649A00E96114 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		FA438BC61E34658D00E96114 /* Moji-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Moji-Bridging-Header.h"; sourceTree = "<group>"; };
 		FA438BC81E34666300E96114 /* Flurry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Flurry.h; sourceTree = "<group>"; };
@@ -296,6 +296,8 @@
 		FA7044D31E6A4360005A0245 /* intro.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = intro.gif; sourceTree = "<group>"; };
 		FA7044D51E6A439C005A0245 /* WebViewAnimationContent.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = WebViewAnimationContent.html; path = ../WebViewAnimationContent.html; sourceTree = "<group>"; };
 		FA7445581E74FBD3001D3144 /* PlayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
+		FAE891A41E995803007543D0 /* ARCaptureRenderTarget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ARCaptureRenderTarget.swift; sourceTree = "<group>"; };
+		FAF28C741E8B5AC70095417D /* KudanAR.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KudanAR.framework; path = "../AR/KudanSDK/KudanSDK-iOS-1.5.1/KudanAR.framework"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -303,7 +305,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FA438BC01E34647900E96114 /* KudanAR.framework in Frameworks */,
+				FAF28C751E8B5AC70095417D /* KudanAR.framework in Frameworks */,
 				FA438BC31E34649A00E96114 /* libc++.tbd in Frameworks */,
 				FA438BD81E34669800E96114 /* Security.framework in Frameworks */,
 				FA438BD61E34668E00E96114 /* SystemConfiguration.framework in Frameworks */,
@@ -494,6 +496,7 @@
 				FA438BDD1E346B8800E96114 /* ModelObject.swift */,
 				FA7445581E74FBD3001D3144 /* PlayerView.swift */,
 				FA0EFA611E62721900CF9D14 /* MojiSelectionCell.swift */,
+				FAE891A41E995803007543D0 /* ARCaptureRenderTarget.swift */,
 				FA438B901E34627600E96114 /* ViewController.swift */,
 				FA438BDB1E346A8B00E96114 /* OverlayViewConroller.swift */,
 				FA438B921E34627600E96114 /* Main.storyboard */,
@@ -531,9 +534,9 @@
 		FA438BC11E34649A00E96114 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FAF28C741E8B5AC70095417D /* KudanAR.framework */,
 				FA438BD71E34669800E96114 /* Security.framework */,
 				FA438BD51E34668E00E96114 /* SystemConfiguration.framework */,
-				FA438BBF1E34647900E96114 /* KudanAR.framework */,
 				FA438BC21E34649A00E96114 /* libc++.tbd */,
 				FA438BC71E34666300E96114 /* Flurry */,
 			);
@@ -803,6 +806,7 @@
 			files = (
 				FA438B911E34627600E96114 /* ViewController.swift in Sources */,
 				FA296D6B1E6BA25B008FD779 /* ASScreenRecorder.m in Sources */,
+				FAE891A51E995803007543D0 /* ARCaptureRenderTarget.swift in Sources */,
 				FA438BDE1E346B8800E96114 /* ModelObject.swift in Sources */,
 				FA7445591E74FBD3001D3144 /* PlayerView.swift in Sources */,
 				FA438BD11E34666300E96114 /* FlurryWatchEmpty.m in Sources */,
@@ -976,7 +980,7 @@
 					"$(PROJECT_DIR)/Flurry",
 					"$(PROJECT_DIR)/moji/Flurry",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = eu.kudan.ar;
+				PRODUCT_BUNDLE_IDENTIFIER = com.digitallysavvy.moji;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "/Users/macbook/Documents/iOS_app_dev/moji/moji/Moji-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
@@ -1001,7 +1005,7 @@
 					"$(PROJECT_DIR)/Flurry",
 					"$(PROJECT_DIR)/moji/Flurry",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = eu.kudan.ar;
+				PRODUCT_BUNDLE_IDENTIFIER = com.digitallysavvy.moji;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "/Users/macbook/Documents/iOS_app_dev/moji/moji/Moji-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;

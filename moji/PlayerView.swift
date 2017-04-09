@@ -7,6 +7,7 @@
 //
 
 class PlayerView: UIView {
+   
     var player: AVPlayer? {
         get {
             return playerLayer.player

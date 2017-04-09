@@ -235,7 +235,7 @@
             self.firstTimeStamp = _displayLink.timestamp;
         }
         CFTimeInterval elapsed = (_displayLink.timestamp - self.firstTimeStamp);
-        CMTime time = CMTimeMakeWithSeconds(elapsed, 100); // video recording buffer delay - below 100 causes warnings
+        CMTime time = CMTimeMakeWithSeconds(elapsed, 85); // video recording buffer delay - below 100 causes warnings
         
         CVPixelBufferRef pixelBuffer = NULL;
         CGContextRef bitmapContext = [self createPixelBufferAndBitmapContext:&pixelBuffer];

@@ -106,7 +106,6 @@ class OverlayViewController: UIViewController {
         let htmlPath = Bundle.main.path(forResource: "WebViewAnimationContent", ofType: "html")
         let htmlURL = URL(fileURLWithPath: htmlPath!)
         let html = try? Data(contentsOf: htmlURL)
-        
         self.webAnimationView.load(html!, mimeType: "text/html", textEncodingName: "UTF-8", baseURL: htmlURL.deletingLastPathComponent())
 		
 		do {
@@ -135,7 +134,7 @@ class OverlayViewController: UIViewController {
 		currentModel = 0
         if isFirstLoad {
 			webAnimationView.alpha = 1.0
-            UIView.animate(withDuration: 0.5, delay:1.2, animations: { () -> Void in
+            UIView.animate(withDuration: 0.5, delay:1.5, animations: { () -> Void in
                 self.launchHolder.alpha = 0
             })
 			UIView.animate(withDuration: 0.75, delay:5.0, animations: { () -> Void in

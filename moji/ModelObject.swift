@@ -55,13 +55,13 @@ class ModelObject {
 			if animated == "true" {
 				self.animated = true
 			}
-			if let ambientVector = jsonModel["ambient"] as! [String :AnyObject]? {
+			if let ambientVector = jsonModel["ambient"] as! [String : AnyObject]? {
 				guard let ambient = ARVector3(valuesX: ambientVector["x"] as! Float, y: ambientVector["y"] as! Float, z: ambientVector["z"] as! Float) else {
 					return
 				}
 				self.ambient = ambient
 			}
-			if let specularVector = jsonModel["specular"] as! [String :AnyObject]? {
+			if let specularVector = jsonModel["specular"] as! [String : AnyObject]? {
 				guard let specular = ARVector3(valuesX: specularVector["x"] as! Float, y: specularVector["y"] as! Float, z: specularVector["z"] as! Float) else {
 					return
 				}
