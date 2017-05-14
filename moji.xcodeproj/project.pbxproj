@@ -491,14 +491,14 @@
 		FA438B8D1E34627600E96114 /* moji */ = {
 			isa = PBXGroup;
 			children = (
-				FA438BC61E34658D00E96114 /* Moji-Bridging-Header.h */,
 				FA438B8E1E34627600E96114 /* AppDelegate.swift */,
-				FA438BDD1E346B8800E96114 /* ModelObject.swift */,
-				FA7445581E74FBD3001D3144 /* PlayerView.swift */,
-				FA0EFA611E62721900CF9D14 /* MojiSelectionCell.swift */,
-				FAE891A41E995803007543D0 /* ARCaptureRenderTarget.swift */,
 				FA438B901E34627600E96114 /* ViewController.swift */,
 				FA438BDB1E346A8B00E96114 /* OverlayViewConroller.swift */,
+				FA438BC61E34658D00E96114 /* Moji-Bridging-Header.h */,
+				FAE891A41E995803007543D0 /* ARCaptureRenderTarget.swift */,
+				FA0EFA611E62721900CF9D14 /* MojiSelectionCell.swift */,
+				FA438BDD1E346B8800E96114 /* ModelObject.swift */,
+				FA7445581E74FBD3001D3144 /* PlayerView.swift */,
 				FA438B921E34627600E96114 /* Main.storyboard */,
 				FA438B9A1E34627600E96114 /* LaunchScreen.storyboard */,
 				FA438B981E34627600E96114 /* Assets.xcassets */,

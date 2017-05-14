@@ -37,7 +37,6 @@ class ARCaptureRenderTarget : ARRenderTarget {
         setupAssetWriter()
         setupFBO()
         isvideoFinishing = false
-        
     }
     
     func setupAssetWriter() {
@@ -78,15 +77,6 @@ class ARCaptureRenderTarget : ARRenderTarget {
         else {
             assert(false, "Error adding asset writer input")
         }
-//        // Start the asset writer immediately for this simple example.
-//        assetWriter?.startWriting()
-//        assetWriter?.startSession(atSourceTime: kCMTimeZero)
-//        // Store the date when the asset writer started recording video.
-//        startDate = Date()
-//        // Check the asset writer has started.
-//        if assetWriter?.status == .failed {
-//            assert(false, "Error starting asset writer \(String(describing: assetWriter?.error))")
-//        }
     }
     
     
@@ -98,23 +88,36 @@ class ARCaptureRenderTarget : ARRenderTarget {
         glGenFramebuffers(1, &fbo)
         bindBuffer()
         // Create the OpenGL texture cache.
-        var cvTextureCache : CVOpenGLESTextureCache? // UnsafeMutablePointer<CVOpenGLESTextureCache?>
-        var err : CVReturn = CVOpenGLESTextureCacheCreate(kCFAllocatorDefault, nil, EAGLContext.current(), nil, &cvTextureCache)
-        if err != 0 {
-            assert(false, "Error creating CVOpenGLESTextureCacheCreate \(err)")
+        var cvTextureCacheRef:CVOpenGLESTextureCache?
+        var err =  CVOpenGLESTextureCacheCreate(kCFAllocatorDefault, nil, EAGLContext.current(), nil, &cvTextureCacheRef)
+        if err != kCVReturnSuccess {
+            assert(false, "Error at CVOpenGLESTextureCacheCreate \(err)")
         }
         // Create the OpenGL texture we will be rendering to.
-        let pixelBufferPool: CVPixelBufferPool = assetWriterPixelBufferInput!.pixelBufferPool!
         var pixelBuffer : CVPixelBuffer?
+        guard let writerPixelBufferInput = assetWriterPixelBufferInput else { print("no assetWriterPixelBufferInput" ); return }
+        guard let pixelBufferPool = writerPixelBufferInput.pixelBufferPool else { print("no pixelBufferPool" ); return }
         err = CVPixelBufferPoolCreatePixelBuffer(kCFAllocatorDefault, pixelBufferPool, &pixelBuffer)
-        if err !=  0 {
-            assert(false, "Error creating CVPixelBufferPoolCreatePixelBuffer \(err)")
+        if err != kCVReturnSuccess {
+            print ("error msg createing Pixelbuffer pool \(err)")
+            return
         }
+        
         var renderTexture: CVOpenGLESTexture?
-        CVOpenGLESTextureCacheCreateTextureFromImage(kCFAllocatorDefault, cvTextureCache!, pixelBufferPool as! CVImageBuffer, nil,     // texture attributes
-            GLenum(GL_TEXTURE_2D), GL_RGBA,     // opengl format
-            GLsizei(Int(width)), GLsizei(Int(height)), GLenum(GL_BGRA),     // native iOS format
-            GLenum(GL_UNSIGNED_BYTE), 0, &renderTexture)
+        err = CVOpenGLESTextureCacheCreateTextureFromImage(kCFAllocatorDefault,
+                                                     cvTextureCacheRef!,
+                                                     pixelBufferPool as! CVImageBuffer,
+                                                     nil,
+                                                     // texture attributes
+                                                     GLenum(GL_TEXTURE_2D), GL_RGBA,     // opengl format
+                                                     GLsizei(Int(width)), GLsizei(Int(height)), GLenum(GL_BGRA),     // native iOS format
+                                                     GLenum(GL_UNSIGNED_BYTE),
+                                                     0,
+                                                     &renderTexture)
+        if err != kCVReturnSuccess {
+            print ("error CVOpenGLESTextureCacheCreateTextureFromImage \(err)")
+            return
+        }
         // Attach the OpenGL texture to the framebuffer.
         glBindTexture(CVOpenGLESTextureGetTarget(renderTexture!), CVOpenGLESTextureGetName(renderTexture!))
         glTexParameterf(GLenum(GL_TEXTURE_2D), GLenum(GL_TEXTURE_WRAP_S), GLfloat(GL_CLAMP_TO_EDGE))
@@ -127,7 +130,7 @@ class ARCaptureRenderTarget : ARRenderTarget {
         glRenderbufferStorage(GLenum(GL_RENDERBUFFER), GLenum(GL_DEPTH24_STENCIL8_OES), GLsizei(width), GLsizei(height))
         glFramebufferRenderbuffer(GLenum(GL_FRAMEBUFFER), GLenum(GL_DEPTH_ATTACHMENT), GLenum(GL_RENDERBUFFER), depthRenderbuffer)
         // Check the FBO is complete and ready for rendering
-        checkFBO()
+        self.checkFBO()
     }
     
     override func bindBuffer() {
@@ -152,13 +155,6 @@ class ARCaptureRenderTarget : ARRenderTarget {
         }
         // Unlock the pixel buffer to free it.
         CVPixelBufferUnlockBaseAddress(bindBuffer as! CVPixelBuffer, CVPixelBufferLockFlags(rawValue: 0))
-//        // In this simple example, finish the video if it has been recording for 5 seconds.
-//        if CMTimeCompare(currentTime, CMTimeMake(5, 1)) == 1 {
-//            isvideoFinishing = true
-//            assetWriter?.finishWriting(completionHandler: {() -> Void in
-//                print("Finished writing video.")
-//            })
-//        }
     }
     
     func startRecording() {

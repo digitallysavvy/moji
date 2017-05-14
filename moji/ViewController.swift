@@ -22,7 +22,6 @@ class ViewController: ARCameraViewController, AVCaptureVideoDataOutputSampleBuff
 	var modelNode : ARModelNode = ARModelNode()
 	var targetNode : ARModelNode = ARModelNode()
 	var arbiButtonState : ArbiTrackState = ArbiTrackState.ARBI_PLACEMENT
-	//var lastScale : CGFloat = CGFloat()
 	var lastScale : CGFloat? = nil
 //    var totalScale : CGFloat? = nil
 	var lastPanX : CGFloat? = nil
@@ -40,15 +39,6 @@ class ViewController: ARCameraViewController, AVCaptureVideoDataOutputSampleBuff
         // set data source and delegate
         SELECT_VIEW?.delegate = self
         SELECT_VIEW?.dataSource = self
-		
-        // Create the ARCaptureRenderTarget offscreen render target object.
-		videoRenderTarget = ARCaptureRenderTarget.init(width: Float(view.frame.size.width), height: Float(view.frame.size.height))
-        
-        // Add the viewports that need rendering to the the render target.
-        videoRenderTarget?.addViewPort(cameraView.cameraViewPort) // add the camera image viewport
-        videoRenderTarget?.addViewPort(cameraView.contentViewPort) //add the 3D content viewport
-        
-        ARRenderer.getInstance().add(videoRenderTarget as! ARRendererDelegate) // Add the offscreen render target to the renderer.
 		
 		// hide the navigation bar
 		self.navigationController?.setNavigationBarHidden(true, animated: false)
@@ -71,6 +61,15 @@ class ViewController: ARCameraViewController, AVCaptureVideoDataOutputSampleBuff
 		if isFirstLoad {
 			isFirstLoad = false
 		}
+        
+        // Create the ARCaptureRenderTarget offscreen render target object.
+        videoRenderTarget = ARCaptureRenderTarget.init(width: Float(view.frame.size.width), height: Float(view.frame.size.height))
+        
+        // Add the viewports that need rendering to the the render target.
+        videoRenderTarget?.addViewPort(cameraView.cameraViewPort) // add the camera image viewport
+        videoRenderTarget?.addViewPort(cameraView.contentViewPort) //add the 3D content viewport
+        
+//        ARRenderer.getInstance().addRenderTarget(videoRenderTarget!) // Add the offscreen render target to the renderer.
 	}
 	
 	override func setupContent() {
@@ -383,7 +382,7 @@ class ViewController: ARCameraViewController, AVCaptureVideoDataOutputSampleBuff
 	func recordScreen (gesture : UIGestureRecognizer) {
 		if arbiButtonState == ArbiTrackState.ARBI_TRACKING {
             if gesture.state == UIGestureRecognizerState.began {
-//                let recorder : ASScreenRecorder = ASScreenRecorder.sharedInstance()
+                let recorder : ASScreenRecorder = ASScreenRecorder.sharedInstance()
                 let renderer = ARRenderer.getInstance()
 				print("Start screen recording")
 				Flurry.logEvent("LongPress_Record_Video", withParameters: nil, timed: true);
@@ -393,24 +392,26 @@ class ViewController: ARCameraViewController, AVCaptureVideoDataOutputSampleBuff
 				WATERMARK?.isHidden = false
                 // startRecording
                 objc_sync_enter(renderer)
-//                recorder.startRecording()
-                videoRenderTarget?.startRecording()
+                recorder.startRecording()
+//                renderer?.addRenderTarget(videoRenderTarget!) // Add the offscreen render target to the renderer.
+//                videoRenderTarget?.startRecording()
                 objc_sync_exit(renderer)
             } else if gesture.state == UIGestureRecognizerState.ended {
-//                let recorder : ASScreenRecorder = ASScreenRecorder.sharedInstance()
+                let recorder : ASScreenRecorder = ASScreenRecorder.sharedInstance()
                 let renderer = ARRenderer.getInstance()
 				print("Stop screen recording")
 				Flurry.endTimedEvent("LongPress_Record_Video", withParameters: nil);
 				// stopRecording
                 objc_sync_enter(renderer)
-                videoRenderTarget?.stopRecording(completionBlock: {
-                    print("recording finished")
-                    self.previewVideo()
-                })
-//                recorder.stopRecording(completion: {
+//                videoRenderTarget?.stopRecording(completionBlock: {
+//                    renderer?.removeRenderTarget(self.videoRenderTarget!) // Add the offscreen render target to the renderer.
 //                    print("recording finished")
 //                    self.previewVideo()
 //                })
+                recorder.stopRecording(completion: {
+                    print("recording finished")
+                    self.previewVideo()
+                })
                 objc_sync_exit(renderer)
 				SHUTTER_BTN?.isHidden = false
 				SELECT_BTN?.isHidden = false
@@ -421,9 +422,9 @@ class ViewController: ARCameraViewController, AVCaptureVideoDataOutputSampleBuff
 	}
     
     func previewVideo() {
-//        let previewURL = UserDefaults.standard.value(forKey: "previewURL")
-//        VideoPreviewURL = URL(string: previewURL! as! String)
-        VideoPreviewURL = videoRenderTarget?.getOutputUrl()
+        let previewURL = UserDefaults.standard.value(forKey: "previewURL")
+        VideoPreviewURL = URL(string: previewURL! as! String)
+//        VideoPreviewURL = videoRenderTarget?.getOutputUrl()
         PLAYER_INSTANCE = AVPlayer(url: VideoPreviewURL! as URL)
         PLAYER_INSTANCE?.actionAtItemEnd = .none
         PLAYER_INSTANCE?.isMuted = true
