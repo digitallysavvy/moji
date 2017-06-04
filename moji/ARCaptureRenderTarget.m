@@ -5,6 +5,7 @@
 //
 
 #import "ARCaptureRenderTarget.h"
+#import "moji-Swift.h"
 #import <CoreVideo/CoreVideo.h>
 #include <OpenGLES/ES2/gl.h>
 #include <OpenGLES/ES2/glext.h>
@@ -201,7 +202,14 @@
             if (_onDidStop != nil) {
                 _onDidStop(_currentVideoURL, _currentAudioURL, CMTimeGetSeconds(_currentTime));
             }
-            
+            NSString *previewURL = [_currentVideoURL absoluteString];
+            NSUserDefaults *standardUserDefaults = [NSUserDefaults standardUserDefaults];
+            if (standardUserDefaults) {
+                [standardUserDefaults setObject:previewURL forKey:@"previewURL"];
+                [standardUserDefaults synchronize];
+                ViewController *controller = [[ViewController alloc]init];
+                [controller previewVideo];
+            }
             [self resetResources];
         }];
         

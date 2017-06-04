@@ -74,6 +74,6 @@
 
 //AS Screen Recorder Integration
 #import "ASScreenRecorder.h"
-//#import "ARCaptureRenderTarget.h"
+#import "ARCaptureRenderTarget.h"
 
 #endif /* Moji_Bridging_Header_h */

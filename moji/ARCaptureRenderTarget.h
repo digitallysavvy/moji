@@ -7,6 +7,9 @@
 #import <KudanAR/KudanAR.h>
 #import <AVFoundation/AVFoundation.h>
 
+@class ViewController;
+@protocol ViewController;
+
 @interface ARCaptureRenderTarget : ARRenderTarget {
     enum {
         ENC_AAC = 1,
