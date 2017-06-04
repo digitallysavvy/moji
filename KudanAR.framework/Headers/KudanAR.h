@@ -19,8 +19,6 @@ FOUNDATION_EXPORT const unsigned char KudanARVersionString[];
 #import <KudanAR/ARDirectionalLight.h>
 #import <KudanAR/ARExtractedCameraTexture.h>
 #import <KudanAR/ARFullscreenManager.h>
-#import <KudanAR/ARGPSNode.h>
-#import <KudanAR/ARGPSManager.h>
 #import <KudanAR/ARGyroManager.h>
 #import <KudanAR/ARImageNode.h>
 #import <KudanAR/ARLight.h>
@@ -63,3 +61,4 @@ FOUNDATION_EXPORT const unsigned char KudanARVersionString[];
 #import <KudanAR/ARPointNode.h>
 #import <KudanAR/ARMaterialProperty.h>
 #import <KudanAR/ARMaterialPropertyReflection.h>
+#import <KudanAR/ARCMMotionManager.h>

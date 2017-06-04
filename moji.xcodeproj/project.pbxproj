@@ -135,8 +135,8 @@
 		FA7044D61E6A439C005A0245 /* WebViewAnimationContent.html in Resources */ = {isa = PBXBuildFile; fileRef = FA7044D51E6A439C005A0245 /* WebViewAnimationContent.html */; };
 		FA7445591E74FBD3001D3144 /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7445581E74FBD3001D3144 /* PlayerView.swift */; };
 		FA7C19BF1EE47A3300F29668 /* ARCaptureRenderTarget.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7C19BE1EE47A3300F29668 /* ARCaptureRenderTarget.m */; };
+		FA7C19C11EE4BEBA00F29668 /* KudanAR.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA7C19C01EE4BEBA00F29668 /* KudanAR.framework */; };
 		FAE891A51E995803007543D0 /* ARCaptureRenderTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE891A41E995803007543D0 /* ARCaptureRenderTarget.swift */; };
-		FAF28C751E8B5AC70095417D /* KudanAR.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAF28C741E8B5AC70095417D /* KudanAR.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -299,8 +299,8 @@
 		FA7445581E74FBD3001D3144 /* PlayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
 		FA7C19BD1EE47A3300F29668 /* ARCaptureRenderTarget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARCaptureRenderTarget.h; sourceTree = "<group>"; };
 		FA7C19BE1EE47A3300F29668 /* ARCaptureRenderTarget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARCaptureRenderTarget.m; sourceTree = "<group>"; };
+		FA7C19C01EE4BEBA00F29668 /* KudanAR.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = KudanAR.framework; sourceTree = "<group>"; };
 		FAE891A41E995803007543D0 /* ARCaptureRenderTarget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ARCaptureRenderTarget.swift; sourceTree = "<group>"; };
-		FAF28C741E8B5AC70095417D /* KudanAR.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KudanAR.framework; path = "../AR/KudanSDK/KudanSDK-iOS-1.5.1/KudanAR.framework"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -308,7 +308,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FAF28C751E8B5AC70095417D /* KudanAR.framework in Frameworks */,
+				FA7C19C11EE4BEBA00F29668 /* KudanAR.framework in Frameworks */,
 				FA438BC31E34649A00E96114 /* libc++.tbd in Frameworks */,
 				FA438BD81E34669800E96114 /* Security.framework in Frameworks */,
 				FA438BD61E34668E00E96114 /* SystemConfiguration.framework in Frameworks */,
@@ -539,7 +539,7 @@
 		FA438BC11E34649A00E96114 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				FAF28C741E8B5AC70095417D /* KudanAR.framework */,
+				FA7C19C01EE4BEBA00F29668 /* KudanAR.framework */,
 				FA438BD71E34669800E96114 /* Security.framework */,
 				FA438BD51E34668E00E96114 /* SystemConfiguration.framework */,
 				FA438BC21E34649A00E96114 /* libc++.tbd */,

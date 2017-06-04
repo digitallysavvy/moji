@@ -9,50 +9,68 @@
 @class ARRenderer;
 
 /**
- Rendering related events.
+ A delegate for events relating to rendering.
+ Add this as a delegate to be notified when the events trigger and run code before or after the renderer draws a frame, or when the renderer stops or starts.
  */
 @protocol ARRendererDelegate <NSObject>
 
 @required
 @optional
 /**
- Called prior to rendering each frame.
+ Delegate method called just prior to rendering each frame.
  */
 - (void)rendererPreRender;
 
 /**
- Called after rendering each frame.
+ Delegate method called just after rendering each frame.
  */
 - (void)rendererPostRender;
 
 /**
- Called when the renderer has been paused. This can be used to shut down other subsystems.
+ Delegate method called when the renderer has been paused. This can be used to shut down other subsystems.
  */
 - (void)rendererDidPause;
 
 /**
- Called when the renderer resumes after being paused.
+ Delegate method called when the renderer resumes after being paused.
  */
 - (void)rendererDidResume;
 
 @end
 
 /**
- Face culling modes.
+ A class used for rendering the camera image and AR content on screen. 
+ **/
+@interface ARRenderer : NSObject
+
+/**
+ Get the ARRenderer singleton.
+ 
+ Example of use:
+ @code
+ ARRenderer *renderer = [ARRenderer getInstance];
+ @endcode
+ 
+ @return The singleton instance.
+ */
++ (ARRenderer *)getInstance;
+
+/**
+ Polygon Face culling modes. These are useful for improving performance by not rendering certain types of polygon when they aren't visible. Available modes are:
  */
 typedef enum {
     /**
-     Don't cull faces.
+     Don't cull any polygons.
      */
     ARFaceCullModeDisabled,
     
     /**
-     Cull backfacing polygons.
+     Cull only back-facing polygons.
      */
     ARFaceCullModeBack,
     
     /**
-     Cull frontfacing polygons.
+     Cull only front-facing polygons.
      */
     ARFaceCullModeFront,
     
@@ -63,119 +81,162 @@ typedef enum {
 } ARFaceCullMode;
 
 /**
- Blending modes for transparency.
+ Blending modes for transparency. Different modes will provide greater graphical fidelity at the cost of performance. Available modes are:
  */
-typedef NS_ENUM(NSInteger, ARBlendMode) {
+typedef enum {
     /**
-     Disable blending, no transparency.
+     **ARBlendModeDisabled** - Disable Blending, no transparency.
      */
     ARBlendModeDisabled,
     
     /**
-     Additive blending.
+     **ARBlendModeAdditive** - Additive Blending.
      */
     ARBlendModeAdditive,
     
     /**
-     Alpha additive blending.
+     **ARBlendModeAlphaAdditive** - Alpha Additive Blending.
      */
     ARBlendModeAlphaAdditive,
     
     /**
-     Premultiplied alpha blending.
+     **ARBlendModePreMultiplyAlpha** - Premultiplied Alpha Blending.
      */
     ARBlendModePreMultiplyAlpha,
-};
+}ARBlendMode;
 
 /**
- Renderer state.
+ The current state of the renderer. Possible states are:
  */
-typedef NS_ENUM(NSInteger, ARRendererState) {
+typedef enum {
     /**
-     Renderer is uninitialised.
+     **ARRendererStateUninitialised** - The renderer has not yet been initialised and is unusable.
      */
     ARRendererStateUninitialised,
     
     /**
-     Renderer is paused.
+     **ARRendererStatePaused** - The renderer is paused and will not render new frames.
      */
     ARRendererStatePaused,
     
     /**
-     Renderer is active.
+     **ARRendererStateRunning** - The renderer is active and will draw frames.
      */
     ARRendererStateRunning,
-};
-
-@interface ARRenderer : NSObject
+}ARRendererState;
 
 /**
- Get the renderer singleton.
- @return The singleton instance.
- */
-+ (ARRenderer *)getInstance;
-
-/**
- The current renderer state.
+ The current renderer state (Uninitialised, Paused or Running).
  */
 @property (nonatomic) ARRendererState rendererState;
 
 /**
- The time in seconds of the current frame.
+ The time, in seconds, of the current frame.
  */
 @property (nonatomic, readonly) NSTimeInterval currentFrameTime;
 
 /**
+ The array of ARRenderTarget objects registered with the renderer.
+ */
+@property (nonatomic, readonly) NSArray *renderTargets;
+
+/**
  Use this renderer's OpenGL context. This should be called if you intend to modify content (textures, meshes, materials) from a new thread.
+ 
+ Example of use:
+ @code
+ [[ARRenderer getInstance] useContext];
+ @endcode
  */
 - (void)useContext;
 
 /**
  Add a delegate for rendering event notifications.
+ 
+ Example of use:
+ @code
+ [[ARRenderer getInstance] addDelegate:self];
+ @endcode
+ 
  @param delegate The delegate to add.
  */
 - (void)addDelegate:(id <ARRendererDelegate>)delegate;
 
 /**
  Remove a delegate for rendering event notifications.
+ 
+ Example of use:
+ @code
+ [[ARRenderer getInstance] removeDelegate:self];
+ @endcode
+ 
  @param delegate The delegate to remove.
  */
 - (void)removeDelegate:(id <ARRendererDelegate>)delegate;
 
 /**
  Add a render target to the renderer. This is required if render targets are to be automatically drawn each frame.
+ 
+ Example of use:
+ @code
+ // self.renderTarget - A previously created ARRenderTarget.
+ [[ARRenderer getInstance] addRenderTarget:self.renderTarget];
+ @endcode
+ 
  @param renderTarget The render target to add.
  */
 - (void)addRenderTarget:(ARRenderTarget *)renderTarget;
 
 /**
  Remove a render target from the renderer.
+ 
+ Example of use:
+ @code
+ [[ARRenderer getInstance] removeRenderTarget:renderTarget];
+ @endcode
+ 
  @param renderTarget The render target to remove.
  */
 - (void)removeRenderTarget:(ARRenderTarget *)renderTarget;
 
 /**
- The list of ARRenderTarget objects registered with the renderer.
- */
-@property (nonatomic, readonly) NSArray *renderTargets;
-
-/**
- Initialise the renderer. This is usually called automatically.
+ Initialise the renderer. This should be called automatically. It is not recommended to call this method manually.
+ 
+ Example of use:
+ @code
+ [[ARRenderer getInstance] initialise];
+ @endcode
  */
 - (void)initialise;
 
 /**
- Deinitialise the renderer. This is usually called automatically.
+ Deinitialise the renderer. This is usually called automatically. It is not recommended to call this method manually.
+ Changes the ARRendererState to ARRendererStateUninitialised.
+ 
+ Example of use:
+ @code
+ [[ARRenderer getInstance] deinitialise];
+ @endcode
  */
 - (void)deinitialise;
 
 /**
- Pause all renderering operations.
+ Pause all rendering operations. Changes the ARRendererState to ARRendererStatePaused. Any delegates implementing rendererDidPause will be called at this time.
+ 
+ Example of use:
+ @code
+ [[ARRenderer getInstance] pause];
+ @endcode
  */
 - (void)pause;
 
 /**
- Resume rendering operations.
+ Resume rendering operations. Changes the ARRendererState to ARRendererStateRunning. Any delegates implementing rendererDidResume will be called this time.
+ 
+ Example of use:
+ @code
+ [[ARRenderer getInstance] resume];
+ @endcode
  */
 - (void)resume;
 
