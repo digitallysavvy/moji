@@ -28,6 +28,8 @@
 	<true/>
 	<key>NSCameraUsageDescription</key>
 	<string>Moji requires access to the camera to produce the AR experience</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Moji requires access to your microphone when recording video, because lets face it video is better with audio</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Moji requires access this to save all photos and videos taken</string>
 	<key>UILaunchStoryboardName</key>

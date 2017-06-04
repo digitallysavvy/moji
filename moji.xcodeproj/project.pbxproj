@@ -134,7 +134,8 @@
 		FA7044D41E6A4360005A0245 /* intro.gif in Resources */ = {isa = PBXBuildFile; fileRef = FA7044D31E6A4360005A0245 /* intro.gif */; };
 		FA7044D61E6A439C005A0245 /* WebViewAnimationContent.html in Resources */ = {isa = PBXBuildFile; fileRef = FA7044D51E6A439C005A0245 /* WebViewAnimationContent.html */; };
 		FA7445591E74FBD3001D3144 /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7445581E74FBD3001D3144 /* PlayerView.swift */; };
-		FAE891A51E995803007543D0 /* ARCaptureRenderTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE891A41E995803007543D0 /* ARCaptureRenderTarget.swift */; };
+		FA7C19BF1EE47A3300F29668 /* ARCaptureRenderTarget.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7C19BE1EE47A3300F29668 /* ARCaptureRenderTarget.m */; };
+		FAE891A51E995803007543D0 /* ARCaptureRenderTarget-Swift-not-used.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE891A41E995803007543D0 /* ARCaptureRenderTarget-Swift-not-used.swift */; };
 		FAF28C751E8B5AC70095417D /* KudanAR.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAF28C741E8B5AC70095417D /* KudanAR.framework */; };
 /* End PBXBuildFile section */
 
@@ -296,7 +297,9 @@
 		FA7044D31E6A4360005A0245 /* intro.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = intro.gif; sourceTree = "<group>"; };
 		FA7044D51E6A439C005A0245 /* WebViewAnimationContent.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = WebViewAnimationContent.html; path = ../WebViewAnimationContent.html; sourceTree = "<group>"; };
 		FA7445581E74FBD3001D3144 /* PlayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
-		FAE891A41E995803007543D0 /* ARCaptureRenderTarget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ARCaptureRenderTarget.swift; sourceTree = "<group>"; };
+		FA7C19BD1EE47A3300F29668 /* ARCaptureRenderTarget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARCaptureRenderTarget.h; sourceTree = "<group>"; };
+		FA7C19BE1EE47A3300F29668 /* ARCaptureRenderTarget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARCaptureRenderTarget.m; sourceTree = "<group>"; };
+		FAE891A41E995803007543D0 /* ARCaptureRenderTarget-Swift-not-used.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ARCaptureRenderTarget-Swift-not-used.swift"; sourceTree = "<group>"; };
 		FAF28C741E8B5AC70095417D /* KudanAR.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KudanAR.framework; path = "../AR/KudanSDK/KudanSDK-iOS-1.5.1/KudanAR.framework"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -495,7 +498,7 @@
 				FA438B901E34627600E96114 /* ViewController.swift */,
 				FA438BDB1E346A8B00E96114 /* OverlayViewConroller.swift */,
 				FA438BC61E34658D00E96114 /* Moji-Bridging-Header.h */,
-				FAE891A41E995803007543D0 /* ARCaptureRenderTarget.swift */,
+				FAE891A41E995803007543D0 /* ARCaptureRenderTarget-Swift-not-used.swift */,
 				FA0EFA611E62721900CF9D14 /* MojiSelectionCell.swift */,
 				FA438BDD1E346B8800E96114 /* ModelObject.swift */,
 				FA7445581E74FBD3001D3144 /* PlayerView.swift */,
@@ -509,6 +512,8 @@
 				FA7044D51E6A439C005A0245 /* WebViewAnimationContent.html */,
 				FA296D691E6BA25B008FD779 /* ASScreenRecorder.h */,
 				FA296D6A1E6BA25B008FD779 /* ASScreenRecorder.m */,
+				FA7C19BD1EE47A3300F29668 /* ARCaptureRenderTarget.h */,
+				FA7C19BE1EE47A3300F29668 /* ARCaptureRenderTarget.m */,
 			);
 			path = moji;
 			sourceTree = "<group>";
@@ -806,8 +811,9 @@
 			files = (
 				FA438B911E34627600E96114 /* ViewController.swift in Sources */,
 				FA296D6B1E6BA25B008FD779 /* ASScreenRecorder.m in Sources */,
-				FAE891A51E995803007543D0 /* ARCaptureRenderTarget.swift in Sources */,
+				FAE891A51E995803007543D0 /* ARCaptureRenderTarget-Swift-not-used.swift in Sources */,
 				FA438BDE1E346B8800E96114 /* ModelObject.swift in Sources */,
+				FA7C19BF1EE47A3300F29668 /* ARCaptureRenderTarget.m in Sources */,
 				FA7445591E74FBD3001D3144 /* PlayerView.swift in Sources */,
 				FA438BD11E34666300E96114 /* FlurryWatchEmpty.m in Sources */,
 				FA438BDC1E346A8B00E96114 /* OverlayViewConroller.swift in Sources */,

@@ -17,7 +17,7 @@ enum ArbiTrackState: Int {
 	case ARBI_TRACKING
 }
 
-class ViewController: ARCameraViewController, AVCaptureVideoDataOutputSampleBufferDelegate, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+@objc class ViewController: ARCameraViewController, AVCaptureVideoDataOutputSampleBufferDelegate, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
 	
 	var modelNode : ARModelNode = ARModelNode()
 	var targetNode : ARModelNode = ARModelNode()
@@ -393,7 +393,10 @@ class ViewController: ARCameraViewController, AVCaptureVideoDataOutputSampleBuff
                 // startRecording
                 objc_sync_enter(renderer)
                 recorder.startRecording()
+//////////////////////////////////////////////////////////////////
+//                videoRenderTarget?.startRecording()
 //                renderer?.addRenderTarget(videoRenderTarget!) // Add the offscreen render target to the renderer.
+//////////////////////////////////////////////////////////////////
 //                videoRenderTarget?.startRecording()
                 objc_sync_exit(renderer)
             } else if gesture.state == UIGestureRecognizerState.ended {
@@ -403,11 +406,15 @@ class ViewController: ARCameraViewController, AVCaptureVideoDataOutputSampleBuff
 				Flurry.endTimedEvent("LongPress_Record_Video", withParameters: nil);
 				// stopRecording
                 objc_sync_enter(renderer)
+//                videoRenderTarget?.stopRecording()
+//                previewVideo()
+//////////////////////////////////////////////////////////////////
 //                videoRenderTarget?.stopRecording(completionBlock: {
 //                    renderer?.removeRenderTarget(self.videoRenderTarget!) // Add the offscreen render target to the renderer.
 //                    print("recording finished")
 //                    self.previewVideo()
 //                })
+//////////////////////////////////////////////////////////////////
                 recorder.stopRecording(completion: {
                     print("recording finished")
                     self.previewVideo()

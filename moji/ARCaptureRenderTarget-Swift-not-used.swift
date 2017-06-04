@@ -11,7 +11,7 @@ import KudanAR
 import AVFoundation
 
 
-class ARCaptureRenderTarget : ARRenderTarget {
+class ARCaptureRenderTargetSwift : ARRenderTarget {
     
     var assetWriter: AVAssetWriter?
     var isvideoFinishing: Bool?

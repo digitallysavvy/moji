@@ -10,5 +10,4 @@ import UIKit
 
 class MojiSelectionCell: UICollectionViewCell {
     @IBOutlet weak var image: UIImageView!
-    
 }
