@@ -2,7 +2,7 @@
 //  MojiSelectionCell.swift
 //  moji
 //
-//  Created by Macbook on 2/25/17.
+//  Created by Hermes Frangoudis on 2/25/17.
 //  Copyright © 2017 Digitally Savvy. All rights reserved.
 //
 

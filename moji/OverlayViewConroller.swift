@@ -2,7 +2,7 @@
 //  OverlayViewConroller.swift
 //  moji
 //
-//  Created by Macbook on 1/21/17.
+//  Created by Hermes Frangoudis on 1/21/17.
 //  Copyright © 2017 Digitally Savvy. All rights reserved.
 //
 
