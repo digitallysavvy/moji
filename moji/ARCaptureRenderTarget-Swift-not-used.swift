@@ -2,7 +2,7 @@
 //  ARCaptureRenderTarget.swift
 //  moji
 //
-//  Created by Macbook on 4/8/17.
+//  Created by Hermes Frangoudis on 4/8/17.
 //  Copyright © 2017 Digitally Savvy. All rights reserved.
 //
 

@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  moji
 //
-//  Created by Macbook on 1/21/17.
+//  Created by Hermes Frangoudis on 1/21/17.
 //  Copyright © 2017 Digitally Savvy. All rights reserved.
 //
 
@@ -23,13 +23,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		print("checking API KEY")
 		// set KudanAR API Key
 		let apiKey : ARAPIKey = ARAPIKey.sharedInstance()
-		apiKey.setAPIKey("G+1QjdR1ZUMdvXdF6tMJfYqhMWE0RzOs5h0V+SPIBLjMepHxD/jEtEkatP0NDloqNm3ImRRzUU+sL6/nkU/hsehq8Cmsc8RShxsFg4Rr9kqGuM2nxeWO9sf8jzls/eYqzTagJg1WLi55STuT8WXgZCucxritCcjOqyyTY2mEl3nI/DxkXJs8PeEWDQOsyFKhiKKobr6hno9gC+2ehgSe+o/qnYeB0e1oncmt7HSRZ6sctkc3Yr9UpIbT66yEr9ENq1evT6HAr7Y+aUE/U8hI+6KR9wQmH9vSPWPmfs0hDs8Z+eJ7lbU+3b3FThM6CNuUFX4DtuZzY6v3nUc+Fgsgn3tex5Rab0zNRW17k8+CMCsUc0eSKTQHGq18HcqI1/5/ps73eqhtwiQn/XDoCVllE9mLMahZihG5ULrI3Yamavn9IudkMZRMQH5D2tsvFBU420vBzOkPgjKLxGQ45IXtwDosb/Sc1ZHfUBUm2d50ZPk4EHSNMrLlXkfHakQu+r7iSVZjEDVJ7et8FcLS78Rjq+PS1Pj2sEBGBqIcw24XVbOE+v/+zGMe7MQM0pjbrzFX9q/pHPeZrSc047MkhWuSTDpJICi1vJb8pvKdp8645EIZo/ygWwM41WO9a/s8ECLVdtncWOoSmkdMg87ZIeFHyp0T+tySv1qUOODuahWqn5o=")
-		// set Flurry Session
+        apiKey.setAPIKey("nbR1lCHdPeXXVFx4ZXuQXOmzey7JNoO9UzESTq/ti09CCW9eRUoFiSiVEUiT6LLoVEPzsm8X7TOgm3AQ5Sv+z+6FHI+c1pCaGgWvasOTvnIs9Xe1LjEEBOZY4CEIHGBuTQnXXFi+tkOtwLGUs8//1IqOseL1UtlWuPuZnCKOFq09RXK7ZnUna3FkKD5HLzLktMCQUlDDE+lTQcfHioBfaAPnhyl2xKhznX1BmZKIt3cWP3x5WwmAKVHXjGN4OZnQV+ckBGhbUGxTNXF07/aiiSygoUIKuv03R5zD/KWrxePDNxDpw5lLKusE9FVUPObPF4dWLHnAdu1j2CCScb2HsNFta8AewF20jPyMUESEnw6qF+qCYEh1J2VARQB/0kQmw9o0QNtNrlHKBsm1Xh4dI4zDhJbV55HjFiA4Pt5ImU8M0aJji5CCH/rZ6+iB3bIi4T7czn5H/NA1+gTAIl9vgwb19gf4b9Irjzpqvotrea+6aPBOx59eEc/E5BKaLIChWP8KtOXEfiR1P8ycjBuUmjT+uJmcj/9FrCXnBwR/DOL4V5Cu7ZOLYPIdr4DZJv/H4sVb/k68TZqHwoOGzPw1RyPBfZttZciVxnbDl0gmXlB2qVwEIG4TFGPV6+5njnL//giVRZihu20sAfxIC++zVsoxJtUj6JWlLC9VMsldp+E=")
+        // set Flurry Session
 		Flurry.setSessionReportsOnCloseEnabled(true); //  send session data when the user exits the app and when the user starts the app.
 		Flurry.setSessionReportsOnPauseEnabled(true); //  send session data when the user pauses the app and when a user starts the app.
 		let UUIDValue = UIDevice.current.identifierForVendor!.uuidString // unique id for user
 		Flurry.setUserID(UUIDValue); // for tracking Users by their ID
-		Flurry.startSession("S4BBF8RKB4KB65JFT6RN");
+        Flurry.startSession("S4BBF8RKB4KB65JFT6RN");
 		
 		return true
 	}
