@@ -1,11 +1,15 @@
 //
-//  MojiSelectionCell.swift
-//  moji
+//  Class derived from:
 //
-//  Created by Hermes Frangoudis on 2/25/17.
-//  Copyright © 2017 Digitally Savvy. All rights reserved.
+//  PlayerVideoViewController.swift
+//  PlayerVideo
+//
+//  Created by David Alejandro on 2/17/16.
+//  Copyright © 2016 David Alejandro. All rights reserved.
 //
 
+
+/// A simple `UIView` subclass that is backed by an `AVPlayerLayer` layer.
 class PlayerView: UIView {
    
     var player: AVPlayer? {

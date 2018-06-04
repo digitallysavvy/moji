@@ -51,6 +51,9 @@ enum ArbiTrackState: Int {
 			// reset some vars
 			firstPlacement = true
 		}
+        
+        // force full screen
+        self.view.frame = CGRect(x: 0, y: 0, width: (self.parent?.view.frame.width)!, height: (self.parent?.view.frame.height)!)
 	}
 	
 	override func viewDidAppear(_ animated: Bool) {

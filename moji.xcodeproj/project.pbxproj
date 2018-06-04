@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FA05D85C20C4CF42004C6468 /* ARCaptureRenderTarget.m in Sources */ = {isa = PBXBuildFile; fileRef = FA05D85B20C4CF42004C6468 /* ARCaptureRenderTarget.m */; };
 		FA0A74761E370119003DC3DE /* target-moji-square.png in Resources */ = {isa = PBXBuildFile; fileRef = FA0A74751E370119003DC3DE /* target-moji-square.png */; };
 		FA0A74781E3702EC003DC3DE /* exclamationPoint.armodel in Resources */ = {isa = PBXBuildFile; fileRef = FA0A74771E37020E003DC3DE /* exclamationPoint.armodel */; };
 		FA0A76331E3844AC003DC3DE /* grey-bg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FA0A76321E3844AC003DC3DE /* grey-bg.jpg */; };
 		FA0EFA621E62721900CF9D14 /* MojiSelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0EFA611E62721900CF9D14 /* MojiSelectionCell.swift */; };
 		FA0EFA641E62793800CF9D14 /* moji.json in Resources */ = {isa = PBXBuildFile; fileRef = FA0EFA631E62793800CF9D14 /* moji.json */; };
 		FA296D6B1E6BA25B008FD779 /* ASScreenRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = FA296D6A1E6BA25B008FD779 /* ASScreenRecorder.m */; };
-		FA38B7501E346EF000DCD6AD /* armodels.json in Resources */ = {isa = PBXBuildFile; fileRef = FA38B74F1E346EEF00DCD6AD /* armodels.json */; };
 		FA38B7951E346FBB00DCD6AD /* CERAMIC_0.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FA38B7511E346FBB00DCD6AD /* CERAMIC_0.jpg */; };
 		FA38B7961E346FBB00DCD6AD /* CERAMIC_1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FA38B7521E346FBB00DCD6AD /* CERAMIC_1.jpg */; };
 		FA38B7971E346FBB00DCD6AD /* CERAMIC_2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FA38B7531E346FBB00DCD6AD /* CERAMIC_2.jpg */; };
@@ -134,8 +134,6 @@
 		FA7044D41E6A4360005A0245 /* intro.gif in Resources */ = {isa = PBXBuildFile; fileRef = FA7044D31E6A4360005A0245 /* intro.gif */; };
 		FA7044D61E6A439C005A0245 /* WebViewAnimationContent.html in Resources */ = {isa = PBXBuildFile; fileRef = FA7044D51E6A439C005A0245 /* WebViewAnimationContent.html */; };
 		FA7445591E74FBD3001D3144 /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7445581E74FBD3001D3144 /* PlayerView.swift */; };
-		FA7C19BF1EE47A3300F29668 /* ARCaptureRenderTarget.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7C19BE1EE47A3300F29668 /* ARCaptureRenderTarget.m */; };
-		FAE891A51E995803007543D0 /* ARCaptureRenderTarget-Swift-not-used.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE891A41E995803007543D0 /* ARCaptureRenderTarget-Swift-not-used.swift */; };
 		FAF28C751E8B5AC70095417D /* KudanAR.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAF28C741E8B5AC70095417D /* KudanAR.framework */; };
 /* End PBXBuildFile section */
 
@@ -157,6 +155,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		FA05D85A20C4CF42004C6468 /* ARCaptureRenderTarget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARCaptureRenderTarget.h; sourceTree = "<group>"; };
+		FA05D85B20C4CF42004C6468 /* ARCaptureRenderTarget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARCaptureRenderTarget.m; sourceTree = "<group>"; };
 		FA0A74751E370119003DC3DE /* target-moji-square.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "target-moji-square.png"; path = "moji/target-moji-square.png"; sourceTree = "<group>"; };
 		FA0A74771E37020E003DC3DE /* exclamationPoint.armodel */ = {isa = PBXFileReference; lastKnownFileType = file; path = exclamationPoint.armodel; sourceTree = "<group>"; };
 		FA0A76321E3844AC003DC3DE /* grey-bg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "grey-bg.jpg"; path = "moji/grey-bg.jpg"; sourceTree = "<group>"; };
@@ -164,7 +164,6 @@
 		FA0EFA631E62793800CF9D14 /* moji.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = moji.json; sourceTree = "<group>"; };
 		FA296D691E6BA25B008FD779 /* ASScreenRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASScreenRecorder.h; sourceTree = "<group>"; };
 		FA296D6A1E6BA25B008FD779 /* ASScreenRecorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASScreenRecorder.m; sourceTree = "<group>"; };
-		FA38B74F1E346EEF00DCD6AD /* armodels.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = armodels.json; sourceTree = "<group>"; };
 		FA38B7511E346FBB00DCD6AD /* CERAMIC_0.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = CERAMIC_0.jpg; sourceTree = "<group>"; };
 		FA38B7521E346FBB00DCD6AD /* CERAMIC_1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = CERAMIC_1.jpg; sourceTree = "<group>"; };
 		FA38B7531E346FBB00DCD6AD /* CERAMIC_2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = CERAMIC_2.jpg; sourceTree = "<group>"; };
@@ -297,9 +296,6 @@
 		FA7044D31E6A4360005A0245 /* intro.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = intro.gif; sourceTree = "<group>"; };
 		FA7044D51E6A439C005A0245 /* WebViewAnimationContent.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = WebViewAnimationContent.html; path = ../WebViewAnimationContent.html; sourceTree = "<group>"; };
 		FA7445581E74FBD3001D3144 /* PlayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
-		FA7C19BD1EE47A3300F29668 /* ARCaptureRenderTarget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARCaptureRenderTarget.h; sourceTree = "<group>"; };
-		FA7C19BE1EE47A3300F29668 /* ARCaptureRenderTarget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARCaptureRenderTarget.m; sourceTree = "<group>"; };
-		FAE891A41E995803007543D0 /* ARCaptureRenderTarget-Swift-not-used.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ARCaptureRenderTarget-Swift-not-used.swift"; sourceTree = "<group>"; };
 		FAF28C741E8B5AC70095417D /* KudanAR.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KudanAR.framework; path = "../AR/KudanSDK/KudanSDK-iOS-1.5.1/KudanAR.framework"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -498,7 +494,8 @@
 				FA438B901E34627600E96114 /* ViewController.swift */,
 				FA438BDB1E346A8B00E96114 /* OverlayViewConroller.swift */,
 				FA438BC61E34658D00E96114 /* Moji-Bridging-Header.h */,
-				FAE891A41E995803007543D0 /* ARCaptureRenderTarget-Swift-not-used.swift */,
+				FA05D85A20C4CF42004C6468 /* ARCaptureRenderTarget.h */,
+				FA05D85B20C4CF42004C6468 /* ARCaptureRenderTarget.m */,
 				FA0EFA611E62721900CF9D14 /* MojiSelectionCell.swift */,
 				FA438BDD1E346B8800E96114 /* ModelObject.swift */,
 				FA7445581E74FBD3001D3144 /* PlayerView.swift */,
@@ -506,14 +503,11 @@
 				FA438B9A1E34627600E96114 /* LaunchScreen.storyboard */,
 				FA438B981E34627600E96114 /* Assets.xcassets */,
 				FA438B9D1E34627600E96114 /* Info.plist */,
-				FA38B74F1E346EEF00DCD6AD /* armodels.json */,
 				FA0EFA631E62793800CF9D14 /* moji.json */,
 				FA438B951E34627600E96114 /* moji.xcdatamodeld */,
 				FA7044D51E6A439C005A0245 /* WebViewAnimationContent.html */,
 				FA296D691E6BA25B008FD779 /* ASScreenRecorder.h */,
 				FA296D6A1E6BA25B008FD779 /* ASScreenRecorder.m */,
-				FA7C19BD1EE47A3300F29668 /* ARCaptureRenderTarget.h */,
-				FA7C19BE1EE47A3300F29668 /* ARCaptureRenderTarget.m */,
 			);
 			path = moji;
 			sourceTree = "<group>";
@@ -766,7 +760,6 @@
 				FA38B8711E357AF600DCD6AD /* tongue.armodel in Resources */,
 				FA38B89E1E35C55100DCD6AD /* smile.png in Resources */,
 				FA38B86C1E357AF600DCD6AD /* smile.armodel in Resources */,
-				FA38B7501E346EF000DCD6AD /* armodels.json in Resources */,
 				FA438B9C1E34627600E96114 /* LaunchScreen.storyboard in Resources */,
 				FA38B7B81E346FBB00DCD6AD /* PLATINUM_3.jpg in Resources */,
 				FA38B8A11E35C55100DCD6AD /* surprise.png in Resources */,
@@ -811,9 +804,8 @@
 			files = (
 				FA438B911E34627600E96114 /* ViewController.swift in Sources */,
 				FA296D6B1E6BA25B008FD779 /* ASScreenRecorder.m in Sources */,
-				FAE891A51E995803007543D0 /* ARCaptureRenderTarget-Swift-not-used.swift in Sources */,
+				FA05D85C20C4CF42004C6468 /* ARCaptureRenderTarget.m in Sources */,
 				FA438BDE1E346B8800E96114 /* ModelObject.swift in Sources */,
-				FA7C19BF1EE47A3300F29668 /* ARCaptureRenderTarget.m in Sources */,
 				FA7445591E74FBD3001D3144 /* PlayerView.swift in Sources */,
 				FA438BD11E34666300E96114 /* FlurryWatchEmpty.m in Sources */,
 				FA438BDC1E346A8B00E96114 /* OverlayViewConroller.swift in Sources */,
@@ -988,7 +980,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.digitallysavvy.moji-demo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "/Users/macbook/Documents/iOS_app_dev/moji/moji/Moji-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/Moji-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1014,7 +1006,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.digitallysavvy.moji-demo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "/Users/macbook/Documents/iOS_app_dev/moji/moji/Moji-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/Moji-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

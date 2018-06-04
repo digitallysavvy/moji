@@ -9,15 +9,22 @@
 @interface ARRenderTargetTexture : ARRenderTarget
 
 /**
- The texture this render target renders to.
+ The ARTexture this render target renders to.
  */
 @property (nonatomic) ARTexture *texture;
 
 /**
- Initialise this render target with texture dimensions.
+ Initialise this render target texture with the given dimensions.
+ 
+ Example of use:
+ @code
+ ARRenderTargetTexture *renderTargetTexture = [[ARRenderTargetTexture alloc] initWithWidth:100.0 height:100.0];
+ @endcode
+ 
  @param width The width of the texture.
  @param height The height of the texture.
- @return The initialised render target.
+ 
+ @return The initialised render target texture.
  */
 - (instancetype)initWithWidth:(float)width height:(float)height;
 

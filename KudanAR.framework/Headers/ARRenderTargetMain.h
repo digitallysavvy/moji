@@ -10,13 +10,6 @@
 @interface ARRenderTargetMain : ARRenderTarget
 
 /**
- Initialise with an existing view, which is responsible for the backing.
- @param view The UIView to use for backing.
- @return The initialised render target.
- */
-- (instancetype)initWithView:(UIView *)view;
-
-/**
  The UIView that backs this render target.
  */
 @property (nonatomic, weak) UIView *view;
@@ -27,7 +20,22 @@
 @property (nonatomic, readonly) BOOL isRetina;
 
 /**
+ Initialise with an existing view, which is responsible for the backing.
+ 
+ Example of use:
+ @code
+ ARRenderTargetMain *renderTargetMain = [[ARRenderTargetMain alloc] initWithView:self.view];
+ @endcode
+ 
+ @param view The UIView to use for backing.
+ 
+ @return The initialised render target.
+ */
+- (instancetype)initWithView:(UIView *)view;
+
+/**
  Touch was received on this render target.
+ 
  @param point The coordinates in the render target of the touch location.
  */
 - (void)didReceiveTouch:(CGPoint)point;

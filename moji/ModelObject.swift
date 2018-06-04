@@ -32,10 +32,10 @@ class ModelObject {
 			let diffuseTexure = jsonModel["diffuse-texure"] as! String?
 			let normalTexture = jsonModel["normal-texture"] as! String?
 			let specularTexture = jsonModel["specular-texure"] as! String?
-			let scale = jsonModel["scale"] as! Float?
-			let rotation = jsonModel["rotation"] as! Float?
-			let shininess = jsonModel["shininess"] as! Float?
-			let reflectivity = jsonModel["reflectivity"] as! Float?
+			let scale = (jsonModel["scale"] as! NSNumber).floatValue
+			let rotation = (jsonModel["rotation"] as! NSNumber).floatValue
+			let shininess = (jsonModel["shininess"] as! NSNumber).floatValue
+            let reflectivity = (jsonModel["reflectivity"] as! NSNumber).floatValue
 			let reflectionMap = jsonModel["reflection-map"] as! String?
 			let animated = jsonModel["animated"] as! String?
             let selectIcon = jsonModel["icon"] as! String?
@@ -45,10 +45,10 @@ class ModelObject {
 			self.diffuseTexure = diffuseTexure
 			self.normalTexture = normalTexture
 			self.specularTexture = specularTexture
-			self.scale = scale!
-			self.rotation = rotation!
-			self.shininess = shininess!
-			self.reflectivity = reflectivity!
+            self.scale = scale
+            self.rotation = rotation
+            self.shininess = shininess
+            self.reflectivity = reflectivity
 			self.reflectionMap = reflectionMap
             self.selectIcon = selectIcon
 			
@@ -56,13 +56,13 @@ class ModelObject {
 				self.animated = true
 			}
 			if let ambientVector = jsonModel["ambient"] as! [String : AnyObject]? {
-				guard let ambient = ARVector3(valuesX: ambientVector["x"] as! Float, y: ambientVector["y"] as! Float, z: ambientVector["z"] as! Float) else {
+				guard let ambient = ARVector3(valuesX: (ambientVector["x"]?.floatValue)!, y: (ambientVector["y"]?.floatValue)!, z: (ambientVector["z"]?.floatValue)!) else {
 					return
 				}
 				self.ambient = ambient
 			}
-			if let specularVector = jsonModel["specular"] as! [String : AnyObject]? {
-				guard let specular = ARVector3(valuesX: specularVector["x"] as! Float, y: specularVector["y"] as! Float, z: specularVector["z"] as! Float) else {
+			if let specularVector = jsonModel["specular"] as! [String : NSNumber]? {
+                guard let specular = ARVector3(valuesX: (specularVector["x"]?.floatValue)!, y: (specularVector["y"]?.floatValue)!, z: (specularVector["z"]?.floatValue)!) else {
 					return
 				}
 				self.specular = specular
